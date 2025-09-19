@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Αναλώσεις βάση πωλήσεων, waste & shrinkage "Παραδοσιακό Αριστοτέλους" Ιούλιος - 2025</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter for a professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e2e8f0; /* Slightly darker, more formal light gray */
+            color: #2d3748; /* Darker text for formality */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #cbd5e0; /* Subtle border */
+        }
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        th, td {
+            padding: 1rem 1.25rem; /* Increased padding for more space */
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0; /* Lighter border */
+        }
+        th {
+            background-color: #2a4365; /* Dark blue header background */
+            color: #ffffff;
+            font-weight: 700; /* Bolder headers */
+            border-radius: 0.75rem 0.75rem 0 0; /* More rounded corners */
+            white-space: nowrap;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:nth-child(even) {
+            background-color: #f7fafc; /* Very light gray for even rows */
+        }
+        .highlight-row {
+            background-color: #bfdbfe; /* More formal light blue for total row */
+            font-weight: 700;
+            color: #1a202c; /* Darker text for highlighted row */
+        }
+        .key-finding {
+            padding: 1.25rem;
+            background-color: #ebf8ff; /* Lighter blue for findings */
+            border-left: 6px solid #3182ce; /* Stronger blue border */
+            border-radius: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .chart-container {
+            position: relative;
+            height: 400px; /* Fixed height for charts */
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+        /* Custom styles for shrinkage values */
+        .shrinkage-positive {
+            color: #10b981; /* Green */
+            font-weight: 600;
+        }
+        .shrinkage-negative {
+            color: #ef4444; /* Red */
+            font-weight: 600;
+        }
+        /* Collapsible columns specific styles for coffee table */
+        .collapsible-column-coffee {
+            display: none;
+        }
+        .collapsible-column-coffee.visible {
+            display: table-cell;
+        }
+        /* Collapsible columns specific styles for sandwich table */
+        .collapsible-column-sandwich {
+            display: none;
+        }
+        .collapsible-column-sandwich.visible {
+            display: table-cell;
+        }
+        /* Collapsible columns specific styles for products table */
+        .collapsible-column-products {
+            display: none;
+        }
+        .collapsible-column-products.visible {
+            display: table-cell;
+        }
+    </style>
+</head>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="store.html"><strong>Επιστροφή στην αρχική σελίδα</strong></a>
+<body class="antialiased">
+    <div class="container">
+        <header class="text-center mb-10">
+            <h1 class="text-5xl font-extrabold text-gray-900 mb-4 rounded-xl bg-white p-6 shadow-xl">Αναλώσεις βάση πωλήσεων, waste & shrinkage "Παραδοσιακό Αριστοτέλους" Ιούλιος - 2025</h1>
+            <p class="text-xl text-gray-700">Μια λεπτομερής επισκόπηση των δεδομένων πωλήσεων και κόστους</p>
+        </header>
+
+        <section class="card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Εισαγωγή</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Αυτό το infographic παρουσιάζει μια ολοκληρωμένη ανάλυση των δεδομένων αναλώσεων των παρακάτω προϊόντων παρακολούθησης
+            </p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">1. Χωριάτικη τυρόπιτα</p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">2. Χωριάτικη Σπανακοτυρόπιτα</p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">3. Χωριάτικη Κοτόπιτα</p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">4. Κουρού Τυρόπιτα</p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">5. Χωριάτικη Μανιταρόπιτα</p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">6. Μπουγάτσα κρέμα</p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">7. Μπουγάτσα φέτα</p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">8. Κουλούρι</p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">9. Κουλούρι δεκάσπορο</p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">10. Κουλούρι ταχίνι</p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">11. Νερό 500ml</p>
+            <p class="italic text-gray-700 font-semibold leading-relaxed">12. Καφές Espresso (Εμπεριέχει Espresso, Cappuccino και τα αντίστοιχα απο την κατηγορία Benefit)</p>
+            <p class="text-gray-700 leading-relaxed">Εστιάζοντας σε βασικούς δείκτες απόδοσης όπως οι συνολικές πωλήσεις, η καθαρή αξία, το κόστος τροφίμων, οι αποκλίσεις, η σπατάλη και η συρρίκνωση.</p>
+            <p class="text-gray-700 leading-relaxed">Στόχος είναι η παροχή σαφών και εφαρμόσιμων πληροφοριών για τη βελτιστοποίηση των λειτουργιών και τη στρατηγική λήψη αποφάσεων.</p>
+        </section>
+
+        <section class="card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Συνοπτικά Οικονομικά Δεδομένα</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Περιγραφή</th>
+                            <th>Αξία (€)</th>
+                            <th>Συμμετοχή στις συνολικές πωλήσεις</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Τρόφιμα</td><td>€ 59.985,02</td><td>26%</td></tr>
+                        <tr><td>Σάντουιτς</td><td>€ 51.619,01</td><td>22%</td></tr>
+                        <tr><td>Καφές Espresso</td><td>€ 41.793,49</td><td>18%</td></tr>
+                        <tr class="highlight-row"><td><strong>Σύνολο</strong></td><td><strong>€ 153.397,52</strong></td><td><strong>65%</strong></td></tr>
+                        <tr><td>Συνολικές Πωλήσεις</td><td>€ 234.492,50</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Πίνακας Δεδομένων Προϊόντων</h2>
+            <button id="toggleProductDetails" class="mb-4 px-4 py-2 bg-indigo-500 text-white rounded-lg shadow-md hover:bg-indigo-600 transition-colors duration-200">
+                Εμφάνιση/Απόκρυψη Αναλώσεων
+            </button>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Όνομα</th>
+                            <th class="collapsible-column-products">Αναλώσεις πωλήσεων</th>
+                            <th class="collapsible-column-products">Αναλώσεις αγορών</th>
+                            <th>Food cost</th>
+                            <th>Αποκλίσεις</th>
+                            <th>Waste</th>
+                            <th>Shrinkage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ΧΩΡΙΑΤΙΚΗ ΤΥΡΟΠΙΤΑ</td><td class="collapsible-column-products">2301 Τμχ</td><td class="collapsible-column-products">2359 Τμχ</td><td>35,5%</td><td>-58 Τμχ</td><td>-1,4%</td><td class="shrinkage-negative">-2,5%</td></tr>
+                        <tr><td>ΧΩΡΙΑΤΙΚΗ ΣΠΑΝΑΚΟ ΤΥΡΟΠΙΤΑ</td><td class="collapsible-column-products">2454 Τμχ</td><td class="collapsible-column-products">2415 Τμχ</td><td>31,5%</td><td>39 Τμχ</td><td>-0,7%</td><td class="shrinkage-positive">1,6%</td></tr>
+                        <tr><td>ΧΩΡΙΑΤΙΚΗ ΚΟΤΟΠΙΤΑ</td><td class="collapsible-column-products">943 Τμχ</td><td class="collapsible-column-products">1022 Τμχ</td><td>38,3%</td><td>-79 Τμχ</td><td>-5,6%</td><td class="shrinkage-negative">-7,7%</td></tr>
+                        <tr><td>ΧΩΡΙΑΤΙΚΗ ΜΑΝΙΤΑΡΟΠΙΤΑ ΝΗΣΤ</td><td class="collapsible-column-products">391 Τμχ</td><td class="collapsible-column-products">406 Τμχ</td><td>40,9%</td><td>-15 Τμχ</td><td>-8,9%</td><td class="shrinkage-negative">-3,7%</td></tr>
+                        <tr><td>ΚΟΥΡΟΥ ΤΥΡΟΠΙΤΑ</td><td class="collapsible-column-products">1140 Τμχ</td><td class="collapsible-column-products">1144 Τμχ</td><td>25,0%</td><td>-4 Τμχ</td><td>-0,6%</td><td class="shrinkage-negative">-0,3%</td></tr>
+                        <tr><td>ΜΠΟΥΓΑΤΣΑ ΚΡΕΜΑ ΜΕΡΙΔΑ</td><td class="collapsible-column-products">2515 Τμχ</td><td class="collapsible-column-products">2514 Τμχ</td><td>36,0%</td><td>1 Τμχ</td><td>-1,5%</td><td class="shrinkage-positive">0,0%</td></tr>
+                        <tr><td>ΜΠΟΥΓΑΤΣΑ ΜΕ ΦΕΤΑ ΜΕΡΙΔΑ</td><td class="collapsible-column-products">1505 Τμχ</td><td class="collapsible-column-products">1540 Τμχ</td><td>51,3%</td><td>-35 Τμχ</td><td>-5,2%</td><td class="shrinkage-negative">-2,3%</td></tr>
+                        <tr><td>ΚΟΥΛΟΥΡΙ ΣΟΥΣΑΜΕΝΙΟ</td><td class="collapsible-column-products">3282 Τμχ</td><td class="collapsible-column-products">3319 Τμχ</td><td>50,4%</td><td>-37 Τμχ</td><td>-1,1%</td><td class="shrinkage-negative">-1,1%</td></tr>
+                        <tr><td>ΜΠΡΕΤΖΕΛ</td><td class="collapsible-column-products">629 Τμχ</td><td class="collapsible-column-products">708 Τμχ</td><td>56,5%</td><td>-79 Τμχ</td><td>-2,1%</td><td class="shrinkage-negative">-11,2%</td></tr>
+                        <tr><td>ΚΟΥΛΟΥΡΙ ΔΕΚΑΣΠΟΡΟ</td><td class="collapsible-column-products">922 Τμχ</td><td class="collapsible-column-products">950 Τμχ</td><td>43,8%</td><td>-28 Τμχ</td><td>-5,2%</td><td class="shrinkage-negative">-2,9%</td></tr>
+                        <tr><td>ΚΟΥΛΟΥΡI ΜΕ ΓΕΜΙΣΗ ΤΑΧΙΝΙ & ΧΑΡΟΥΠΙ</td><td class="collapsible-column-products">2306 Τμχ</td><td class="collapsible-column-products">2295 Τμχ</td><td>34,8%</td><td>11 Τμχ</td><td>-3,5%</td><td class="shrinkage-positive">0,5%</td></tr>
+                        <tr><td>ΑΝΑΜΙΚΤΑ ΠΙΤΑΚΙΑ</td><td class="collapsible-column-products">1225 kg</td><td class="collapsible-column-products">1283 kg</td><td>43,9%</td><td>-58 kg</td><td>-5,5%</td><td class="shrinkage-negative">-4,5%</td></tr>
+                        <tr><td>ΑΥΡΑ 500ml</td><td class="collapsible-column-products">16658 Τμχ</td><td class="collapsible-column-products">16656 Τμχ</td><td>0,0%</td><td>2 Τμχ</td><td>0,0%</td><td class="shrinkage-positive">0,0%</td></tr>
+                        <tr class="highlight-row"><td><strong>Άθροισμα</strong></td><td class="collapsible-column-products"><strong>36271 Τμχ</strong></td><td class="collapsible-column-products"><strong>36611 Τμχ</strong></td><td><strong>34,2%</strong></td><td><strong>-340 Τμχ</strong></td><td><strong>-1,4%</strong></td><td class="shrinkage-negative"><strong>-0,9%</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- New section for Sandwich Data with a collapsible button -->
+        <section class="card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Πίνακας Δεδομένων Sandwiches</h2>
+            <button id="toggleSandwichDetails" class="mb-4 px-4 py-2 bg-indigo-500 text-white rounded-lg shadow-md hover:bg-indigo-600 transition-colors duration-200">
+                Εμφάνιση/Απόκρυψη Πωλήσεων & Αγορών
+            </button>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Περιγραφή</th>
+                            <th class="collapsible-column-sandwich">Σύνολο Πωλήσεων</th>
+                            <th class="collapsible-column-sandwich">Αναλώσεις αγορών</th>
+                            <th>Food Cost</th>
+                            <th>Αποκλίσεις τμχ</th>
+                            <th>Waste</th>
+                            <th>Shrinkage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>PANIS OLEUM NATURALE (36TMX) me kaseri</td><td class="collapsible-column-sandwich">1444 Τμχ</td><td class="collapsible-column-sandwich">1498 Τμχ</td><td>40,2%</td><td>-54 Τμχ</td><td>-3%</td><td class="shrinkage-negative">-4%</td></tr>
+                        <tr><td>PANIS OLEUM RUSTICALE 100GR (36TMX) ΜΑΥΡΟ</td><td class="collapsible-column-sandwich">747 Τμχ</td><td class="collapsible-column-sandwich">804 Τμχ</td><td>37,8%</td><td>-57 Τμχ</td><td>-4%</td><td class="shrinkage-negative">-7%</td></tr>
+                        <tr><td>PANIS OLEUM SICILIANA 100GR (36TMX) ΛΕΥΚΟ</td><td class="collapsible-column-sandwich">427 Τμχ</td><td class="collapsible-column-sandwich">505 Τμχ</td><td>33,1%</td><td>-78 Τμχ</td><td>-3%</td><td class="shrinkage-negative">-15%</td></tr>
+                        <tr><td>ΚΑΡΒΕΛΑΚΙ HOVIS 100GR(36TMX) ΣΤΡΟΓΥΛ ΒΡΩΜΗ</td><td class="collapsible-column-sandwich">458 Τμχ</td><td class="collapsible-column-sandwich">518 Τμχ</td><td>35,1%</td><td>-60 Τμχ</td><td>-6%</td><td class="shrinkage-negative">-12%</td></tr>
+                        <tr><td>ΚΑΡΒΕΛΑΚΙ ΧΩΡΙΑΤΙΚΟ (36ΤΜΧ)</td><td class="collapsible-column-sandwich">4001 Τμχ</td><td class="collapsible-column-sandwich">3937 Τμχ</td><td>34,3%</td><td>64 Τμχ</td><td>-2%</td><td class="shrinkage-positive">2%</td></tr>
+                        <tr><td>ΜΠΡΙΟΣ 50ΓΡ (K-50TMΧ)</td><td class="collapsible-column-sandwich">800 Τμχ</td><td class="collapsible-column-sandwich">976 Τμχ</td><td>38,9%</td><td>-176 Τμχ</td><td>-3%</td><td class="shrinkage-negative">-18%</td></tr>
+                        <tr><td>ΜΠΡΙΟΣ ΓΙΑ BURGER 100ΓΡ(KIB-30TMX)</td><td class="collapsible-column-sandwich">0 Τμχ</td><td class="collapsible-column-sandwich">0 Τμχ</td><td>0,0%</td><td>0 Τμχ</td><td>0%</td><td class="shrinkage-positive">0%</td></tr>
+                        <tr><td>ΧΩΡΙΑΤ ΜΠΑΓΚΕΤΑ ΛΕΥΚΗ(30ΤΜΧ)</td><td class="collapsible-column-sandwich">4282 Τμχ</td><td class="collapsible-column-sandwich">4386 Τμχ</td><td>32,1%</td><td>-104 Τμχ</td><td>-1%</td><td class="shrinkage-negative">-2%</td></tr>
+                        <tr><td>ΧΩΡΙΑΤ ΜΠΑΓΚΕΤΑ ΟΛΙΚΗΣ(30ΤΜΧ)</td><td class="collapsible-column-sandwich">984 Τμχ</td><td class="collapsible-column-sandwich">1020 Τμχ</td><td>33,7%</td><td>-36 Τμχ</td><td>-3%</td><td class="shrinkage-negative">-4%</td></tr>
+                        <tr><td>ΨΩΜΑΚΙ ΚΟΥΡΚΟΥΜΑ-ΚΟΛΟΚΥΘΟΣΠΟΡΟ(KIB-45TMX)</td><td class="collapsible-column-sandwich">1186 Τμχ</td><td class="collapsible-column-sandwich">1251 Τμχ</td><td>44,5%</td><td>-65 Τμχ</td><td>-4%</td><td class="shrinkage-negative">-5%</td></tr>
+                        <tr><td>ΨΩΜΑΚΙ ΧΑΡΟΥΠΙ-ΚΑΡΥΔΙ(KIB-45TMX)</td><td class="collapsible-column-sandwich">1290 Τμχ</td><td class="collapsible-column-sandwich">1296 Τμχ</td><td>34,1%</td><td>-6 Τμχ</td><td>-7%</td><td class="shrinkage-positive">0%</td></tr>
+                        <tr><td>ΨΩΜΙ ΚΟΥΛΟΥΡΙ ΣΟΥΣΑΜΕ(36ΤΜΧ)</td><td class="collapsible-column-sandwich">2804 Τμχ</td><td class="collapsible-column-sandwich">2908 Τμχ</td><td>33,1%</td><td>-104 Τμχ</td><td>-1%</td><td class="shrinkage-negative">-4%</td></tr>
+                        <tr class="highlight-row"><td><strong>Άθροισμα</strong></td><td class="collapsible-column-sandwich"><strong>18423 Τμχ</strong></td><td class="collapsible-column-sandwich"><strong>19099 Τμχ</strong></td><td><strong>35,1%</strong></td><td><strong>-676 Τμχ</strong></td><td><strong>-2%</strong></td><td class="shrinkage-negative"><strong>-4%</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Πίνακας Δεδομένων Καφέ</h2>
+            <button id="toggleCoffeeDetails" class="mb-4 px-4 py-2 bg-indigo-500 text-white rounded-lg shadow-md hover:bg-indigo-600 transition-colors duration-200">
+                Εμφάνιση/Απόκρυψη Αναλυτικών Στοιχείων Καφέ
+            </button>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Όνομα</th>
+                            <th class="collapsible-column-coffee">Πωλήσεις kg</th>
+                            <th class="collapsible-column-coffee">Ιδιοκα/σεις kg</th>
+                            <th class="collapsible-column-coffee">Καταστροφες kg</th>
+                            <th class="collapsible-column-coffee">Πωλήσεις αξία</th>
+                            <th class="collapsible-column-coffee">Αγορές kg</th>
+                            <th class="collapsible-column-coffee">Aπογραφη εναρξης</th>
+                            <th class="collapsible-column-coffee">Aπογραφη ληξης</th>
+                            <th class="collapsible-column-coffee">Καθαρή Αξία</th>
+                            <th>Αναλώσεις πωλησεων</th>
+                            <th>Αναλώσεις αγορών</th>
+                            <th>Αποκλίσεις kg</th>
+                            <th>Waste</th>
+                            <th>Shrinkage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ΕΣΠΡΕΣΣΟ</td>
+                            <td class="collapsible-column-coffee">175,255</td>
+                            <td class="collapsible-column-coffee">3,5965</td>
+                            <td class="collapsible-column-coffee">0</td>
+                            <td class="collapsible-column-coffee">€ 25.870,83</td>
+                            <td class="collapsible-column-coffee"></td>
+                            <td class="collapsible-column-coffee"></td>
+                            <td class="collapsible-column-coffee"></td>
+                            <td class="collapsible-column-coffee">€ 22.894,54</td>
+                            <td>178,8515</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>ΚΑΠΟΥΤΣΙΝΟ</td>
+                            <td class="collapsible-column-coffee">60,8605</td>
+                            <td class="collapsible-column-coffee">0,1485</td>
+                            <td class="collapsible-column-coffee">0</td>
+                            <td class="collapsible-column-coffee">€ 11.015,66</td>
+                            <td class="collapsible-column-coffee"></td>
+                            <td class="collapsible-column-coffee"></td>
+                            <td class="collapsible-column-coffee"></td>
+                            <td class="collapsible-column-coffee">€ 9.748,37</td>
+                            <td>61,009</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Benefit</td>
+                            <td class="collapsible-column-coffee">39,8185</td>
+                            <td class="collapsible-column-coffee">0</td>
+                            <td class="collapsible-column-coffee">0</td>
+                            <td class="collapsible-column-coffee">€ 4.907,00</td>
+                            <td class="collapsible-column-coffee"></td>
+                            <td class="collapsible-column-coffee"></td>
+                            <td class="collapsible-column-coffee"></td>
+                            <td class="collapsible-column-coffee">€ 4.342,48</td>
+                            <td>39,8185</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>ΚΑΦΕΣ ΙLLΥ ΕΣΠΡΕΣΣΟ</strong></td>
+                            <td class="collapsible-column-coffee"><strong>275,93</strong></td>
+                            <td class="collapsible-column-coffee" id="illy_idiok_kg"><strong>3,75</strong></td>
+                            <td class="collapsible-column-coffee" id="illy_kat_kg"><strong>0,00</strong></td>
+                            <td class="collapsible-column-coffee"><strong>€ 41.793,49</strong></td>
+                            <td class="collapsible-column-coffee"><strong>289,50</strong></td>
+                            <td class="collapsible-column-coffee"><strong>43,00</strong></td>
+                            <td class="collapsible-column-coffee"><strong>66,10</strong></td>
+                            <td class="collapsible-column-coffee"><strong>€ 36.985,39</strong></td>
+                            <td><strong>279,68</strong></td>
+                            <td><strong>266,40</strong></td>
+                            <td><strong>13,28</strong></td>
+                            <td><strong>-1,4%</strong></td>
+                            <td class="shrinkage-positive"><strong>6,4%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- New section for Sales Consumption -->
+        <section class="card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Αναλώσεις Πωλήσεων</h2>
+            <h3 class="text-2xl font-bold text-gray-800 my-4">Αναλώσεις Α υλών από Πωλήσεις</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Κωδικός</th>
+                            <th rowspan="2">Όνομα</th>
+                            <th colspan="2">Monthly</th>
+                            <th colspan="2">Weekly</th>
+                        </tr>
+                        <tr>
+                            <th>Τεμάχια</th>
+                            <th>Κιβώτια</th>
+                            <th>Τεμάχια</th>
+                            <th>Κιβώτια</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>001-0001</td><td>ΧΩΡΙΑΤΙΚΗ ΤΥΡΟΠΙΤΑ</td><td>2301 Τμχ</td><td>66 Κιβ</td><td>520 Τμχ</td><td>15 Κιβ</td></tr>
+                        <tr><td>001-0002</td><td>ΧΩΡΙΑΤΙΚΗ ΣΠΑΝΑΚΟ ΤΥΡΟΠΙΤΑ</td><td>2454 Τμχ</td><td>70 Κιβ</td><td>554 Τμχ</td><td>16 Κιβ</td></tr>
+                        <tr><td>001-0033</td><td>ΧΩΡΙΑΤΙΚΗ ΚΟΤΟΠΙΤΑ</td><td>943 Τμχ</td><td>27 Κιβ</td><td>213 Τμχ</td><td>6 Κιβ</td></tr>
+                        <tr><td>001-0029</td><td>ΧΩΡΙΑΤΙΚΗ ΜΑΝΙΤΑΡΟΠΙΤΑ ΝΗΣΤ</td><td>391 Τμχ</td><td>11 Κιβ</td><td>88 Τμχ</td><td>3 Κιβ</td></tr>
+                        <tr><td>001-0009</td><td>ΚΟΥΡΟΥ ΤΥΡΟΠΙΤΑ</td><td>1140 Τμχ</td><td>29 Κιβ</td><td>257 Τμχ</td><td>6 Κιβ</td></tr>
+                        <tr><td>002-0025</td><td>ΜΠΟΥΓΑΤΣΑ ΚΡΕΜΑ ΜΕΡΙΔΑ</td><td>2515 Τμχ</td><td>60 Κιβ</td><td>568 Τμχ</td><td>14 Κιβ</td></tr>
+                        <tr><td>002-0026</td><td>ΜΠΟΥΓΑΤΣΑ ΜΕ ΦΕΤΑ ΜΕΡΙΔΑ</td><td>1505 Τμχ</td><td>36 Κιβ</td><td>340 Τμχ</td><td>8 Κιβ</td></tr>
+                        <tr><td>005-0001</td><td>ΚΟΥΛΟΥΡΙ ΣΟΥΣΑΜΕΝΙΟ</td><td>3282 Τμχ</td><td>66 Κιβ</td><td>741 Τμχ</td><td>15 Κιβ</td></tr>
+                        <tr><td>005-0009</td><td>ΜΠΡΕΤΖΕΛ</td><td>629 Τμχ</td><td>9 Κιβ</td><td>142 Τμχ</td><td>2 Κιβ</td></tr>
+                        <tr><td>005-0025</td><td>ΚΟΥΛΟΥΡΙ ΔΕΚΑΣΠΟΡΟ</td><td>922 Τμχ</td><td>18 Κιβ</td><td>208 Τμχ</td><td>4 Κιβ</td></tr>
+                        <tr><td>005-0058</td><td>ΚΟΥΛΟΥΡI ΜΕ ΓΕΜΙΣΗ ΤΑΧΙΝΙ & ΧΑΡΟΥΠΙ</td><td>2306 Τμχ</td><td>46 Κιβ</td><td>521 Τμχ</td><td>10 Κιβ</td></tr>
+                        <tr><td>047-0052</td><td>ΑΥΡΑ 500ml</td><td>16658 Τμχ</td><td>694 Κιβ</td><td>3761 Τμχ</td><td>157 Κιβ</td></tr>
+                        <tr><td>109-0079</td><td>PANIS OLEUM NATURALE (36TMX) me kaseri</td><td>1444 Τμχ</td><td>40 Κιβ</td><td>326 Τμχ</td><td>9 Κιβ</td></tr>
+                        <tr><td>109-0076</td><td>PANIS OLEUM RUSTICALE 100GR (36TMX) ΜΑΥΡΟ</td><td>747 Τμχ</td><td>21 Κιβ</td><td>169 Τμχ</td><td>5 Κιβ</td></tr>
+                        <tr><td>109-0075</td><td>PANIS OLEUM SICILIANA 100GR (36TMX) ΛΕΥΚΟ</td><td>427 Τμχ</td><td>12 Κιβ</td><td>96 Τμχ</td><td>3 Κιβ</td></tr>
+                        <tr><td>109-0077</td><td>ΚΑΡΒΕΛΑΚΙ HOVIS 100GR(36TMX) ΣΤΡΟΓΥΛ ΒΡΩΜΗ</td><td>458 Τμχ</td><td>13 Κιβ</td><td>103 Τμχ</td><td>3 Κιβ</td></tr>
+                        <tr><td>109-0068</td><td>ΚΑΡΒΕΛΑΚΙ ΧΩΡΙΑΤΙΚΟ (36ΤΜΧ)</td><td>4001 Τμχ</td><td>111 Κιβ</td><td>903 Τμχ</td><td>25 Κιβ</td></tr>
+                        <tr><td>109-0011</td><td>ΜΠΡΙΟΣ 50ΓΡ (K-50TMΧ)</td><td>800 Τμχ</td><td>16 Κιβ</td><td>181 Τμχ</td><td>4 Κιβ</td></tr>
+                        <tr><td>109-0053</td><td>ΧΩΡΙΑΤ ΜΠΑΓΚΕΤΑ ΛΕΥΚΗ(30ΤΜΧ)</td><td>4282 Τμχ</td><td>143 Κιβ</td><td>967 Τμχ</td><td>32 Κιβ</td></tr>
+                        <tr><td>109-0054</td><td>ΧΩΡΙΑΤ ΜΠΑΓΚΕΤΑ ΟΛΙΚΗΣ(30ΤΜΧ)</td><td>984 Τμχ</td><td>33 Κιβ</td><td>222 Τμχ</td><td>7 Κιβ</td></tr>
+                        <tr><td>109-0096</td><td>ΨΩΜΑΚΙ ΚΟΥΡΚΟΥΜΑ-ΚΟΛΟΚΥΘΟΣΠΟΡΟ(KIB-45TMX)</td><td>1186 Τμχ</td><td>26 Κιβ</td><td>268 Τμχ</td><td>6 Κιβ</td></tr>
+                        <tr><td>109-0097</td><td>ΨΩΜΑΚΙ ΧΑΡΟΥΠΙ-ΚΑΡΥΔΙ(KIB-45TMX)</td><td>1290 Τμχ</td><td>29 Κιβ</td><td>291 Τμχ</td><td>6 Κιβ</td></tr>
+                        <tr><td>109-0066</td><td>ΨΩΜΙ ΚΟΥΛΟΥΡΙ ΣΟΥΣΑΜΕ(36ΤΜΧ)</td><td>2804 Τμχ</td><td>78 Κιβ</td><td>633 Τμχ</td><td>18 Κιβ</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800 my-4">Αναλώσεις Espresso από Πωλήσεις</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Κωδικός</th>
+                            <th rowspan="2">Όνομα</th>
+                            <th colspan="2">Monthly</th>
+                            <th colspan="2">Weekly</th>
+                        </tr>
+                        <tr>
+                            <th>Kg</th>
+                            <th>Βαρέλια</th>
+                            <th>Kg</th>
+                            <th>Βαρέλια</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>300-0006</td><td>ΕΣΠΡΕΣΣΟ</td><td>280 kg</td><td>93 Βαρέλια</td><td>63 kg</td><td>21 Βαρέλια</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800 my-4">Αναλώσεις Συσκευασίας από Πωλήσεις</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Κωδικός</th>
+                            <th rowspan="2">Όνομα</th>
+                            <th colspan="2">Monthly</th>
+                            <th colspan="2">Weekly</th>
+                        </tr>
+                        <tr>
+                            <th>Δεσμίδες</th>
+                            <th>Κιβώτια</th>
+                            <th>Δεσμίδες</th>
+                            <th>Κιβώτια</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>202-0145</td><td>4oz</td><td>11 Δεσμ</td><td>1 Κιβ</td><td>2 Δεσμ</td><td>0,1 Κιβ</td></tr>
+                        <tr><td>202-0164</td><td>8oz</td><td>58 Δεσμ</td><td>3 Κιβ</td><td>13 Δεσμ</td><td>0,6 Κιβ</td></tr>
+                        <tr><td>202-0027</td><td>12oz</td><td>620 Δεσμ</td><td>31 Κιβ</td><td>140 Δεσμ</td><td>7,0 Κιβ</td></tr>
+                        <tr><td>202-0160</td><td>16oz</td><td>81 Δεσμ</td><td>4 Κιβ</td><td>18 Δεσμ</td><td>0,9 Κιβ</td></tr>
+                        <tr><td>202-0128</td><td>20oz</td><td>31 Δεσμ</td><td>2 Κιβ</td><td>7 Δεσμ</td><td>0,4 Κιβ</td></tr>
+                        <tr><td>201-0051</td><td>Μπουκάλι pet</td><td>2550 Τμχ</td><td>2550 Τμχ</td><td>576 Τμχ</td><td>576 Τμχ</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Βασικά Ευρήματα και Παρατηρήσεις</h2>
+            <div class="space-y-5">
+                <div class="key-finding">
+                    <p class="text-gray-800"><strong>Υψηλές Επιδόσεις:</strong> Το προϊόν <strong>ΑΥΡΑ 500ml</strong> αναδεικνύεται ως ο κορυφαίος σε αναλώσεις πωλήσεων (16658 μονάδες), με εξαιρετικά χαμηλό κόστος τροφίμων (0,0%). Αυτό υποδηλώνει ισχυρή κερδοφορία και υψηλή ζήτηση.</p>
+                </div>
+                <div class="key-finding">
+                    <p class="text-gray-800"><strong>Κόστος Τροφίμων:</strong> Το <strong>ΜΠΡΕΤΖΕΛ</strong> έχει το υψηλότερο κόστος τροφίμων (56,5%), γεγονός που χρήζει περαιτέρω αξιολόγησης για τη βελτίωση του περιθωρίου κέρδους.</p>
+                </div>
+                <div class="key-finding">
+                    <p class="text-gray-800"><strong>Διαχείριση Αποθεμάτων:</strong> Η συνολική <strong>σπατάλη</strong> (-1,4%) και <strong>συρρίκνωση</strong> (-0,9%) υποδηλώνουν αποτελεσματική διαχείριση αποθεμάτων. Ωστόσο, η θετική απόκλιση και η υψηλή συρρίκνωση στο <strong>ΚΟΥΛΟΥΡΙ ΔΕΚΑΣΠΟΡΟ</strong> (23,9%), απαιτούν άμεση διερεύνηση. Επίσης, το <strong>ΜΠΡΕΤΖΕΛ</strong> παρουσιάζει την υψηλότερη συρρίκνωση (-11,2%), που χρήζει άμεσης εξέτασης.</p>
+                </div>
+                <div class="key-finding">
+                    <p class="text-gray-800">
+                    <strong>Ειδική Παρατήρηση Καφέ:</strong> Ο <strong>ΚΑΦΕΣ ILLY ΕΣΠΡΕΣΣΟ</strong> εμφανίζει σημαντική θετική απόκλιση (+13,28 kg) και θετική συρρίκνωση (+6,4%). Αυτό υποδηλώνει ότι οι αναλώσεις αγορών είναι λιγότερες από τις αναμενόμενες με βάση τις πωλήσεις και τις ιδιοκαταναλώσεις. Αυτό μπορεί να οφείλεται σε λάθος καταγραφές ή σε μεγαλύτερα αποθέματα από ό,τι καταγράφηκε στην απογραφή λήξης.
+                    </p>
+                </div>
+                <div class="key-finding">
+                    <p class="text-gray-800">
+                        <strong>Ιδιοκαταναλώσεις και καταστροφές καφέ:</strong> η ποσότητα των <strong>ιδιοκαταναλώσεων</strong> είναι <span id="idiokatanaloseis-daily-cups"></span> καφέδες ανά ημέρα. Αντίστοιχα και οι καταστροφές είναι <span id="katastrofes-daily-cups"></span> καφέδες ανά ημέρα.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Συμπεράσματα και Προτάσεις</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Η παρούσα ανάλυση παρέχει μια σαφή εικόνα της απόδοσης των προϊόντων. Συνιστάται η περαιτέρω εστίαση σε προϊόντα με υψηλό food cost ή σημαντικές αποκλίσεις, καθώς και η αξιοποίηση των προϊόντων υψηλής απόδοσης για τη μεγιστοποίηση της κερδοφορίας. Η συνεχής παρακολούθηση αυτών των δεικτών είναι ζωτικής σημασίας για τη διατήρηση της λειτουργικής αποδοτικότητας.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Μεθοδολογία</h2>
+            <p class="text-gray-700 leading-relaxed">
+                <h3 class="text-1xl font-semibold text-gray-800 mb-6">Στα τρόφιμα υπολογίζονται οι αναλώσεις που προκύπτουν από το e-liza με αυτές των αγορών σύμφωνα με τον παρακάτω τύπο.</h3>
+                <p><h3 class="italic text-1xl font-semibold text-gray-800 mb-6 text-center"> Αποκλίσεις=Αναλώσεις Πωλήσεων-Αναλώσεις Αγορών , 
+                    <p>*Αναλώσεις πωλήσεων=Πωλήσεις + ιδιοκαταναλώσεις+καταστροφές</p>
+                    <p>*Αναλώσεις Αγορών=(απογραφή έναρξης+Αγορές)-Απογραφή λήξης</strong></h3></p>
+                <p>Υπολογισμός πραγματικού κόστους αναλωθέντων για τα υπό παρακολούθηση προϊόντα, υπολογίζεται το συνολικό κόστος, όπως αυτό προκύπτει από τις Αναλώσεις Αγορών.</p>
+                <p><h3 class="italic text-1xl font-semibold text-gray-800 mb-6 text-center">Κόστος αναλωθέντων=Αναλώσεις Αγορών*τιμή μονάδας προϊόντος</h3></p>
+                <p>Υπολογίζεται η καθαρή αξία που προκύπτει από τις πωλήσεις (<strong>μόνο πωλήσεις</strong>) με βάση το e-liza.</p>
+                <p>Και στη συνέχεια το πραγματικό food cost.</p>
+                <p> <h3 class="italic text-1xl font-semibold text-gray-800 mb-6 text-center">Food cost %=(Κόστος αναλωθέντων)/(Καθαρή Αξία Πωλήσεων)</h3></p>
+                <p> <h3 class="italic text-1xl font-semibold leading-loose text-gray-800 mb-6"> Shrinkage % : </h3> απώλειες αποθεμάτων, αναφέρεται στη διαφορά μεταξύ της θεωρητικής ποσότητας αποθεμάτων (βάσει των απογραφών, πωλήσεων, και αναλυτικών αγορών) και της πραγματικής ποσότητας που βρίσκεται φυσικά στο κατάστημα ή στην αποθήκη. Υπολογίζεται ως ποσοστό τις συνολικής ποσότητας αγορών του είδους. </p>
+                <p> <h3 class="italic text-1xl font-semibold leading-loose text-gray-800 mb-6">Waste % :</h3> αναφέρεται στην ποσότητα των προϊόντων που δεν έχουν πουληθεί και έχουν καταστραφεί η καταναλωθεί από το προσωπικό. </p>
+                <p>Η κύρια διαφορά των δυο είναι ότι στην περίπτωση των waste δικαιολογείται η ποσότητα καθώς είναι καταγεγραμμένη (πιθανές αιτίες είναι η ιδιοκατανάλωση, καταστροφή εξαιτίας ακαταλληλότητάς κ.λπ. ) ενώ ως shrinkage λογίζονται οι ποσότητες που δεν δικαιολογούνται (κλοπές, λάθη στο σύστημα, μη καταγραφή καταστροφών και ιδιοκαταναλώσεων, λάθος από προμηθευτές που δεν εντοπίστηκαν κατά την παραλαβή στο κατάστημα)</p>
+            </p>
+        </section>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="store.html"><strong>Επιστροφή στην αρχική σελίδα</strong></a>        
+        <footer class="text-center text-gray-600 text-sm mt-10 p-4 border-t border-gray-300 rounded-b-xl bg-white shadow-md">
+            <p>&copy; 2025 Αναλώσεις βάση πωλήσεων, waste & shrinkage "Παραδοσιακό Αριστοτέλους" Ιούλιος - 2025. Όλα τα δικαιώματα διατηρούνται.</p>
+            <p>Δημιουργήθηκε για σκοπούς ανάλυσης δεδομένων.</p>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript for collapsible columns
+        document.addEventListener('DOMContentLoaded', function() {
+            // Logic for the coffee table
+            const toggleCoffeeButton = document.getElementById('toggleCoffeeDetails');
+            const collapsibleCoffeeCells = document.querySelectorAll('.collapsible-column-coffee');
+            
+            // Initially hide all collapsible columns for coffee.
+            collapsibleCoffeeCells.forEach(cell => {
+                cell.classList.remove('visible');
+            });
+            
+            let isCoffeeCollapsed = true;
+
+            toggleCoffeeButton.addEventListener('click', function() {
+                collapsibleCoffeeCells.forEach(cell => {
+                    cell.classList.toggle('visible');
+                });
+
+                isCoffeeCollapsed = !isCoffeeCollapsed;
+                if (isCoffeeCollapsed) {
+                    this.textContent = 'Εμφάνιση/Απόκρυψη Αναλυτικών Στοιχείων Καφέ';
+                } else {
+                    this.textContent = 'Εμφάνιση/Απόκρυψη Αναλυτικών Στοιχείων Καφέ';
+                }
+            });
+
+            // Logic for the sandwich table
+            const toggleSandwichButton = document.getElementById('toggleSandwichDetails');
+            const collapsibleSandwichCells = document.querySelectorAll('.collapsible-column-sandwich');
+            
+            // Initially hide the collapsible sandwich columns
+            collapsibleSandwichCells.forEach(cell => {
+                cell.classList.remove('visible');
+            });
+
+            let isSandwichCollapsed = true; // The sandwich columns are now initially hidden
+
+            toggleSandwichButton.addEventListener('click', function() {
+                collapsibleSandwichCells.forEach(cell => {
+                    cell.classList.toggle('visible');
+                });
+
+                isSandwichCollapsed = !isSandwichCollapsed;
+                if (isSandwichCollapsed) {
+                    this.textContent = 'Εμφάνιση/Απόκρυψη Πωλήσεων & Αγορών';
+                } else {
+                    this.textContent = 'Εμφάνιση/Απόκρυψη Πωλήσεων & Αγορών';
+                }
+            });
+            
+            // Logic for the products table
+            const toggleProductButton = document.getElementById('toggleProductDetails');
+            const collapsibleProductCells = document.querySelectorAll('.collapsible-column-products');
+            
+            let isProductCollapsed = true; // The product columns are initially hidden
+            
+            toggleProductButton.addEventListener('click', function() {
+                collapsibleProductCells.forEach(cell => {
+                    cell.classList.toggle('visible');
+                });
+                isProductCollapsed = !isProductCollapsed;
+                if (isProductCollapsed) {
+                    this.textContent = 'Εμφάνιση/Απόκρυψη Αναλώσεων';
+                } else {
+                    this.textContent = 'Εμφάνιση/Απόκρυψη Αναλώσεων';
+                }
+            });
+
+            // Dynamic calculation for coffee consumption
+            function calculateCoffeeConsumption() {
+                const kgPerCup = 0.0165; // 16.5 γραμμάρια ανά καφέ
+                const daysInMonth = 31;
+                
+                // Get the raw kg values from the table
+                const idiokatanaloseisKgElement = document.getElementById('illy_idiok_kg');
+                const katastrofesKgElement = document.getElementById('illy_kat_kg');
+
+                if (idiokatanaloseisKgElement && katastrofesKgElement) {
+                    const idiokatanaloseisKg = parseFloat(idiokatanaloseisKgElement.textContent.replace(',', '.'));
+                    const katastrofesKg = parseFloat(katastrofesKgElement.textContent.replace(',', '.'));
+
+                    // Calculate cups per day
+                    const idiokatanaloseisCups = Math.round(idiokatanaloseisKg / kgPerCup / daysInMonth);
+                    const katastrofesCups = Math.round(katastrofesKg / kgPerCup / daysInMonth);
+                    
+                    // Update the text in the "Key Findings" section
+                    document.getElementById('idiokatanaloseis-daily-cups').textContent = idiokatanaloseisCups;
+                    document.getElementById('katastrofes-daily-cups').textContent = katastrofesCups;
+                }
+            }
+
+            // Call the function to perform the calculation and update the text
+            calculateCoffeeConsumption();
+        });
+    </script>
+</body>
+</html>
