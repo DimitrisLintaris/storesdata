@@ -7,9 +7,34 @@
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome για icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Ensure header/footer images scale properly */
+        .logo {
+            width: 180px;
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+        }
+
+        footer img {
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+        }
+
+        /* Make container full width on mobile */
+        @media (max-width: 600px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Λογότυπο + Header -->
     <header>
         <img src="https://www.paradosiako.net/wp-content/uploads/2023/03/PARADOSIAKO_LOGO_2023_LAND.png" 
              alt="Λογότυπο Παραδοσιακό" class="logo">
@@ -17,7 +42,6 @@
         <p>Επιλέξτε κατάστημα για να δείτε αναλυτικά πωλήσεις, συγκρίσεις και αναλώσεις.</p>
     </header>
 
-    <!-- Περιεχόμενο -->
     <main>
         <section class="container">
             <a href="Aristotelous.html" class="box">
@@ -78,7 +102,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-info">
@@ -88,8 +111,8 @@
                 <p>📞 +30 23920 71101</p>
                 <p>✉️ info@paradosiako.net</p>
             </div>
-        <img src="https://www.paradosiako.net/wp-content/uploads/2024/09/Paradosiako_Store-map-GR-1200x1120.png" 
-             alt="Λογότυπο Παραδοσιακό" class="logo">
+            <img src="https://www.paradosiako.net/wp-content/uploads/2024/09/Paradosiako_Store-map-GR-1200x1120.png" 
+                 alt="Λογότυπο Παραδοσιακό" class="logo">
             <div class="footer-social">
                 <a href="https://www.facebook.com/paradosiako.net" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/paradosiako_gram/?hl=el" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -100,5 +123,3 @@
     </footer>
 </body>
 </html>
-
-
