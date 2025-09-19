@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Πίνακας Απόδοσης Προϊόντων</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter for a professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+        th, td {
+            text-align: center;
+            padding: 0.75rem 0.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #4b5563;
+            text-transform: uppercase;
+        }
+        tr:hover {
+            background-color: #f3f4f6;
+        }
+        .text-green-600 {
+            color: #22c55e;
+        }
+        .text-red-600 {
+            color: #dc2626;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4">
+
+    <div class="container mx-auto">
+        <div class="card p-6">
+            <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Συγκεντρωτικός Πίνακας Απόδοσης Προϊόντων ανά Κατάστημα</h1>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 rounded-lg overflow-hidden">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" rowspan="2" class="py-3 px-6 text-xs font-medium tracking-wider text-gray-500 uppercase">Προϊόν</th>
+                            <th scope="col" colspan="6" class="py-3 px-6 text-xs font-medium tracking-wider text-gray-500 uppercase">Απόκλιση</th>
+                            <th scope="col" colspan="6" class="py-3 px-6 text-xs font-medium tracking-wider text-gray-500 uppercase">Shrinkage (%)</th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Τούμπα</th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Cosmos</th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Πανόραμα</th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Αγίας Σοφίας</th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Αριστοτέλους</th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Εγνατία</th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Τούμπα</th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Cosmos</th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Πανόραμα</th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Αγίας Σοφίας</th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Αριστοτέλους</th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium text-gray-500">Εγνατία</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td>ΧΩΡΙΑΤΙΚΗ ΤΥΡΟΠΙΤΑ</td>
+                            <td>-38</td><td>13</td><td>-1</td><td>-10</td><td>-131</td><td>-75</td>
+                            <td class="text-red-600">-9,0%</td><td class="text-green-600">2,7%</td><td class="text-red-600">-0,3%</td><td class="text-red-600">-2,6%</td><td class="text-red-600">-4,6%</td><td class="text-red-600">-6,4%</td>
+                        </tr>
+                        <tr>
+                            <td>ΧΩΡΙΑΤΙΚΗ ΣΠΑΝΑΚΟ ΤΥΡΟΠΙΤΑ</td>
+                            <td>-73</td><td>5</td><td>10</td><td>4</td><td>-122</td><td>7</td>
+                            <td class="text-red-600">-19,7%</td><td class="text-green-600">1,2%</td><td class="text-green-600">4,6%</td><td class="text-green-600">1,4%</td><td class="text-red-600">-4,1%</td><td class="text-green-600">0,6%</td>
+                        </tr>
+                        <tr>
+                            <td>ΧΩΡΙΑΤΙΚΗ ΚΟΤΟΠΙΤΑ</td>
+                            <td>-19</td><td>-6</td><td>-2</td><td>1</td><td>-111</td><td>-55</td>
+                            <td class="text-red-600">-8,0%</td><td class="text-red-600">-1,8%</td><td class="text-red-600">-1,5%</td><td class="text-green-600">0,5%</td><td class="text-red-600">-9,2%</td><td class="text-red-600">-8,9%</td>
+                        </tr>
+                        <tr>
+                            <td>ΧΩΡΙΑΤΙΚΗ ΜΑΝΙΤΑΡΟΠΙΤΑ ΝΗΣΤ</td>
+                            <td>-18</td><td>-1</td><td>2</td><td>-3</td><td>-44</td><td>-32</td>
+                            <td class="text-red-600">-7,3%</td><td class="text-red-600">-0,9%</td><td class="text-green-600">2,3%</td><td class="text-red-600">-1,9%</td><td class="text-red-600">-7,3%</td><td class="text-red-600">-10,4%</td>
+                        </tr>
+                        <tr>
+                            <td>ΚΟΥΡΟΥ ΤΥΡΟΠΙΤΑ</td>
+                            <td>-18</td><td>-13</td><td>-9</td><td>-4</td><td>-61</td><td>-44</td>
+                            <td class="text-red-600">-12,5%</td><td class="text-red-600">-3,2%</td><td class="text-red-600">-5,7%</td><td class="text-red-600">-1,5%</td><td class="text-red-600">-4,5%</td><td class="text-red-600">-10,9%</td>
+                        </tr>
+                        <tr>
+                            <td>ΜΠΟΥΓΑΤΣΑ ΚΡΕΜΑ ΜΕΡΙΔΑ</td>
+                            <td>-99</td><td>-27</td><td>-24</td><td>41</td><td>-138</td><td>52</td>
+                            <td class="text-red-600">-9,7%</td><td class="text-red-600">-3,7%</td><td class="text-red-600">-0,8%</td><td class="text-green-600">5,1%</td><td class="text-red-600">-4,1%</td><td class="text-green-600">4,0%</td>
+                        </tr>
+                        <tr>
+                            <td>ΜΠΟΥΓΑΤΣΑ ΜΕ ΦΕΤΑ ΜΕΡΙΔΑ</td>
+                            <td>-10</td><td>-21</td><td>32</td><td>-2</td><td>-304</td><td>46</td>
+                            <td class="text-red-600">-1,6%</td><td class="text-red-600">-3,7%</td><td class="text-green-600">1,8%</td><td class="text-red-600">-0,3%</td><td class="text-red-600">-15,1%</td><td class="text-green-600">5,6%</td>
+                        </tr>
+                        <tr>
+                            <td>ΚΟΥΛΟΥΡΙ ΣΟΥΣΑΜΕΝΙΟ</td>
+                            <td>-98</td><td>-57</td><td>-49</td><td>-23</td><td>-207</td><td>-98</td>
+                            <td class="text-red-600">-7,8%</td><td class="text-red-600">-3,3%</td><td class="text-red-600">-2,4%</td><td class="text-red-600">-1,1%</td><td class="text-red-600">-6,0%</td><td class="text-red-600">-4,4%</td>
+                        </tr>
+                        <tr>
+                            <td>ΜΠΡΕΤΖΕΛ</td>
+                            <td>-27</td><td>-8</td><td>-16</td><td>-11</td><td>-75</td><td>73</td>
+                            <td class="text-red-600">-14,7%</td><td class="text-red-600">-2,7%</td><td class="text-red-600">-4,7%</td><td class="text-red-600">-3,6%</td><td class="text-red-600">-11,6%</td><td class="text-green-600">35,6%</td>
+                        </tr>
+                        <tr>
+                            <td>ΚΟΥΛΟΥΡΙ ΔΕΚΑΣΠΟΡΟ</td>
+                            <td>-38</td><td>-22</td><td>-5</td><td>-9</td><td>-32</td><td>14</td>
+                            <td class="text-red-600">-11,4%</td><td class="text-red-600">-7,1%</td><td class="text-red-600">-1,3%</td><td class="text-red-600">-1,5%</td><td class="text-red-600">-3,1%</td><td class="text-green-600">4,0%</td>
+                        </tr>
+                        <tr>
+                            <td>ΚΟΥΛΟΥΡI ΜΕ ΓΕΜΙΣΗ ΤΑΧΙΝΙ & ΧΑΡΟΥΠΙ</td>
+                            <td>-68</td><td>-52</td><td>-90</td><td>-8</td><td>-352</td><td>60</td>
+                            <td class="text-red-600">-6,7%</td><td class="text-red-600">-5,7%</td><td class="text-red-600">-9,3%</td><td class="text-red-600">-0,9%</td><td class="text-red-600">-13,7%</td><td class="text-green-600">9,2%</td>
+                        </tr>
+                        <tr>
+                            <td>ΑΝΑΜΙΚΤΑ ΠΙΤΑΚΙΑ</td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                            <td class="text-green-600">0,0%</td><td class="text-green-600">0,0%</td><td class="text-green-600">0,0%</td><td class="text-green-600">0,0%</td><td class="text-green-600">0,0%</td><td class="text-green-600">0,0%</td>
+                        </tr>
+                        <tr>
+                            <td>ΑΥΡΑ 500ml</td>
+                            <td>-304</td><td>-474</td><td>-124</td><td>-126</td><td>-169</td><td>-36</td>
+                            <td class="text-red-600">-13,3%</td><td class="text-red-600">-8,1%</td><td class="text-red-600">-10,3%</td><td class="text-red-600">-2,9%</td><td class="text-red-600">-1,0%</td><td class="text-red-600">-0,7%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="store.html"><strong>Επιστροφή στην αρχική σελίδα</strong></a>
+    </div>
+</body>
+</html>

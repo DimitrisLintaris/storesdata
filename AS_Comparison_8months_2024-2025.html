@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Πρότυπο Infographic Ανάλυσης Πωλήσεων</title>
+    <title>Infographic Ανάλυσης Πωλήσεων </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -48,13 +49,15 @@
     </style>
 </head>
     <div style="text-align: center; margin-top: 20px;">
-        <a href="Aristotelous.html"><strong>Επιστροφή στην αρχική σελίδα</strong></a>
+        <a href="AgiasSofias.html">
+            <i class="fas fa-home"></i> Επιστροφή στην αρχική σελίδα
+        </a>
 <body class="text-gray-800">
 
     <div class="container mx-auto p-4 md:p-8">
         
         <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2" id="infographic-title">Σύγκριση Πωλήσεων "Παραδοσιακό Αριστοτέλους" Ιούλιος 2024-2025</h1>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2" id="infographic-title">Ανάλυση Πωλήσεων Ιανουάριος - Αύγουστος 2024-2025</h1>
             <p class="text-lg text-gray-600">Βασικές Τάσεις, Προκλήσεις & Ευκαιρίες Ανάπτυξης</p>
         </header>
 
@@ -80,7 +83,7 @@
 
             <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
                 <h2 class="text-2xl font-bold mb-1 text-center">Απόδοση Κατηγοριών</h2>
-                <p class="text-gray-600 mb-4 text-center">Μεταβολή αξίας (%) για τις κατηγορίες, ταξινομημένες με βάση την αξία τους τον Ιούλιο 2025. Το γράφημα αναδεικνύει τους πρωταγωνιστές της ανάπτυξης και τις κατηγορίες που αντιμετωπίζουν προκλήσεις.</p>
+                <p class="text-gray-600 mb-4 text-center">Μεταβολή αξίας (%) για τις κατηγορίες, ταξινομημένες με βάση την αξία τους το οκτάμηνο του 2025. Το γράφημα αναδεικνύει τους πρωταγωνιστές της ανάπτυξης και τις κατηγορίες που αντιμετωπίζουν προκλήσεις.</p>
                 <div class="flex items-center space-x-4 mb-4">
                     <label for="category-count-slider" class="text-gray-700 font-semibold">Εμφάνιση Κατηγοριών:</label>
                     <input type="range" id="category-count-slider" min="1" max="10" value="10" class="flex-grow accent-blue-500">
@@ -104,7 +107,7 @@
             
             <div class="bg-white p-6 rounded-2xl shadow-lg">
                 <h2 class="text-2xl font-bold mb-1 text-center">Σύνθεση Τζίρου Top 5</h2>
-                <p class="text-gray-600 mb-4 text-center">Το γράφημα απεικονίζει τη συμβολή των 5 κορυφαίων κατηγοριών στη συνολική αξία πωλήσεων των Top 10 για τον Ιούλιο του 2025, δείχνοντας την εξάρτηση του τζίρου από συγκεκριμένα προϊόντα.</p>
+                <p class="text-gray-600 mb-4 text-center">Το γράφημα απεικονίζει τη συμβολή των 5 κορυφαίων κατηγοριών στη συνολική αξία πωλήσεων των Top 10 για το πρώτο οκτάμηνο του 2025, δείχνοντας την εξάρτηση του τζίρου από συγκεκριμένα προϊόντα.</p>
                 <div class="chart-container">
                     <canvas id="compositionChart"></canvas>
                 </div>
@@ -112,7 +115,7 @@
 
             <div class="bg-white p-6 rounded-2xl shadow-lg">
                 <h2 class="text-2xl font-bold mb-1 text-center">Συσχέτιση Αξίας & Ποσότητας</h2>
-                <p class="text-gray-600 mb-4 text-center">Κάθε τελεία αντιστοιχεί σε μια κατηγορία, δείχνοντας τη σχέση μεταξύ της συνολικής αξίας πωλήσεων (άξονας Υ) και της ποσότητας (άξονας Χ) για τον Ιούλιο του 2025. Εντοπίστε προϊόντα υψηλής αξίας και μεγάλου όγκου.</p>
+                <p class="text-gray-600 mb-4 text-center">Κάθε τελεία αντιστοιχεί σε μια κατηγορία, δείχνοντας τη σχέση μεταξύ της συνολικής αξίας πωλήσεων (άξονας Υ) και της ποσότητας (άξονας Χ) για το πρώτο οκτάμηνο του 2025. Εντοπίστε προϊόντα υψηλής αξίας και μεγάλου όγκου.</p>
                 <div class="chart-container">
                     <canvas id="scatterChart"></canvas>
                 </div>
@@ -181,7 +184,7 @@
             <!-- NEW SECTION: Μεταβολή Αξίας στις Πρώτες 10 Κατηγορίες -->
             <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
                 <h2 class="text-2xl font-bold mb-1 text-center">Μεταβολή Αξίας στις Πρώτες 10 Κατηγορίες</h2>
-                <p class="text-gray-600 mb-4 text-center">Πίνακας που δείχνει την αξία πωλήσεων για το 2025 και το 2024, καθώς και την απόλυτη μεταβολή της αξίας (€) για τις 10 κορυφαίες κατηγορίες, ταξινομημένες με βάση την αξία τους τον Ιούλιο του 2025.</p>
+                <p class="text-gray-600 mb-4 text-center">Πίνακας που δείχνει την αξία πωλήσεων για το 2025 και το 2024, καθώς και την απόλυτη μεταβολή της αξίας (€) για τις 10 κορυφαίες κατηγορίες, ταξινομημένες με βάση την αξία τους το 2025.</p>
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-white rounded-lg shadow-sm">
                         <thead>
@@ -202,8 +205,7 @@
             <!-- END NEW SECTION -->
 
         </main>
-    <div style="text-align: center; margin-top: 20px;">
-        <a href="store.html"><strong>Επιστροφή στην αρχική σελίδα</strong></a>        
+        
         <footer class="text-center mt-12 py-6 border-t">
             <h2 class="text-2xl font-bold mb-2text-center">Βασικά Συμπεράσματα</h2>
             <div class="max-w-4xl mx-auto text-gray-600 space-y-2" id="conclusions-list">
@@ -320,7 +322,7 @@
          */
         function renderInfographic(data) {
             // Update title
-            document.getElementById('infographic-title').textContent = `Ανάλυση Πωλήσεων ${data.storeName} Ιούλιος 2024-2025`;
+            document.getElementById('infographic-title').textContent = `Ανάλυση Πωλήσεων ${data.storeName} Ιανουάριος - Αύγουστος 2024-2025`;
 
             // Update KPI values
             const overallValueChange = data.overall.totalValue2024 === 0 ? 0 : ((data.overall.totalValue2025 - data.overall.totalValue2024) / data.overall.totalValue2024) * 100;
@@ -496,7 +498,7 @@ scatterChartInstance = new Chart(document.getElementById('scatterChart'), {
     data: {
         labels: data.allCategories.map(d => wrapLabel(d.category)),
         datasets: [{
-            label: 'Κατηγορίες Πωλήσεων Πρώτου Επτάμηνο 2025',
+            label: 'Κατηγορίες Πωλήσεων Ιανουάριος - Αύγουστος 2025',
             data: data.allCategories.map(d => ({ 
                 x: d.quantity, 
                 y: d.value, 
@@ -864,7 +866,7 @@ scatterChartInstance = new Chart(document.getElementById('scatterChart'), {
             // Update Conclusions
             const conclusionsListDiv = document.getElementById('conclusions-list');
             conclusionsListDiv.innerHTML = `
-                <p>Η συνολική αξία πωλήσεων για το πρώτο Επτάμηνο παρουσίασε ${overallValueChange >= 0 ? 'αύξηση' : 'μείωση'} (${overallValueChange >= 0 ? '+' : ''}${overallValueChange.toFixed(0)}%), ενώ ο όγκος πωλήσεων παρουσίασε ${overallQuantityChange >= 0 ? 'αύξηση' : 'μείωση'} (${overallQuantityChange >= 0 ? '+' : ''}${overallQuantityChange.toFixed(0)}%).</p>
+                <p>Η συνολική αξία πωλήσεων για το πρώτο οκτάμηνο του 2025 παρουσίασε ${overallValueChange >= 0 ? 'αύξηση' : 'μείωση'} (${overallValueChange >= 0 ? '+' : ''}${overallValueChange.toFixed(0)}%), ενώ ο όγκος πωλήσεων παρουσίασε ${overallQuantityChange >= 0 ? 'αύξηση' : 'μείωση'} (${overallQuantityChange >= 0 ? '+' : ''}${overallQuantityChange.toFixed(0)}%).</p>
                 <p>Οι κατηγορίες με τη μεγαλύτερη ανάπτυξη είναι το <span class="font-bold text-green-600">${winners[0] ? winners[0].category : 'N/A'}</span>, το <span class="font-bold text-green-600">${winners[1] ? winners[1].category : 'N/A'}</span>, οι <span class="font-bold text-green-600">${winners[2] ? winners[2].category : 'N/A'}</span> και οι <span class="font-bold text-green-600">${winners[3] ? winners[3].category : 'N/A'}</span>.</p>
                 <p>Οι κατηγορίες με τις μεγαλύτερες προκλήσεις είναι τα <span class="font-bold text-red-600">${losers[0] ? losers[0].category : 'N/A'}</span>, το <span class="font-bold text-red-600">${losers[1] ? losers[1].category : 'N/A'}</span>, το <span class="font-bold text-red-600">${losers[2] ? losers[2].category : 'N/A'}</span> και το <span class="font-bold text-red-600">${losers[3] ? losers[3].category : 'N/A'}</span>.</p>
                 <p>Η στρατηγική εστίαση στην περαιτέρω ενίσχυση των κατηγοριών με θετική μεταβολή είναι κρίσιμης σημασίας για τη διατήρηση της ανοδικής πορείας, ενώ απαιτείται διερεύνηση για τις κατηγορίες με αρνητική μεταβολή.</p>
@@ -873,7 +875,7 @@ scatterChartInstance = new Chart(document.getElementById('scatterChart'), {
 
         // Initial data for the infographic (AG.SOFIAS 37 store)
         const initialInfographicData = {
-            storeName: '"Παραδοσιακό Αριστοτέλους"',
+            storeName: '"Παραδοσιακό Αγίας Σοφίας"',
             overall: {
                 totalValue2025: 0, // Will be calculated from allCategories
                 totalValue2024: 0, // Will be calculated from allCategories
@@ -882,110 +884,113 @@ scatterChartInstance = new Chart(document.getElementById('scatterChart'), {
                 top10Share: 81 // From "Top 10 Κατηγορίες ποσοστό τζίρου"
             },
             allCategories: [
-				{ category: 'ΣΑΝΤΟΥΪΤΣ', value: parseCurrency('51618,91'), value2024: parseCurrency('51845'), valueChange: parsePercentage('0%'), quantity:14078, quantity2024: 14484, quantityChange: parsePercentage('-3%') },
-				{ category: 'ΕΣΠΡΕΣΣΟ', value: parseCurrency('25870,5'), value2024: parseCurrency('25319'), valueChange: parsePercentage('2%'), quantity:10525, quantity2024: 11344, quantityChange: parsePercentage('-7%') },
-				{ category: 'ΠΙΤΕΣ', value: parseCurrency('25389,08'), value2024: parseCurrency('26733'), valueChange: parsePercentage('-5%'), quantity:10053, quantity2024: 10874, quantityChange: parsePercentage('-8%') },
-				{ category: 'ΠΙΤΑΚΙΑ-ΟΡΘ. ΠΙΤΕΣ', value: parseCurrency('15975,68'), value2024: parseCurrency('22746'), valueChange: parsePercentage('-30%'), quantity:956, quantity2024: 2143, quantityChange: parsePercentage('-55%') },
-				{ category: 'ΜΠΟΥΓΑΤΣΑ', value: parseCurrency('11480,86'), value2024: parseCurrency('13446'), valueChange: parsePercentage('-15%'), quantity:4353, quantity2024: 5089, quantityChange: parsePercentage('-14%') },
-				{ category: 'ΚΑΠΟΥΤΣΙΝΟ', value: parseCurrency('11015,65'), value2024: parseCurrency('10785'), valueChange: parsePercentage('2%'), quantity:4105, quantity2024: 4364, quantityChange: parsePercentage('-6%') },
-				{ category: 'ΠΑΓΩΤΑΤΖΙΔΙΚΟ', value: parseCurrency('9947,31'), value2024: parseCurrency('10768'), valueChange: parsePercentage('-8%'), quantity:2854, quantity2024: 3418, quantityChange: parsePercentage('-17%') },
-				{ category: 'ΑΡΤΟΖΥΜΕΣ', value: parseCurrency('9074,59'), value2024: parseCurrency('14121'), valueChange: parsePercentage('-36%'), quantity:7534, quantity2024: 10075, quantityChange: parsePercentage('-25%') },
-				{ category: 'ΑΝΑΨΥΚΤΙΚΑ ΜΠΟΥΚΑΛΙ', value: parseCurrency('8563,62'), value2024: parseCurrency('10008'), valueChange: parsePercentage('-14%'), quantity:16696, quantity2024: 18352, quantityChange: parsePercentage('-9%') },
-				{ category: 'ΧΥΜΟΙ ΦΥΣΙΚΟΙ', value: parseCurrency('7402,93'), value2024: parseCurrency('8213'), valueChange: parsePercentage('-10%'), quantity:2442, quantity2024: 2921, quantityChange: parsePercentage('-16%') },
-				{ category: 'PIZZA BAR', value: parseCurrency('7278,77'), value2024: parseCurrency('0'), valueChange: parsePercentage('100%'), quantity:2390, quantity2024: 0, quantityChange: parsePercentage('100%') },
-				{ category: 'ΚΡΟΥΑΣΑΝ', value: parseCurrency('6686,01'), value2024: parseCurrency('2596'), valueChange: parsePercentage('158%'), quantity:3432, quantity2024: 2007, quantityChange: parsePercentage('71%') },
-				{ category: 'GOODBUY ΠΡΟϊΟΝΤΑ-ΜΠΑΡΕΣ', value: parseCurrency('5488,83'), value2024: parseCurrency('5744'), valueChange: parsePercentage('-4%'), quantity:322, quantity2024: 521, quantityChange: parsePercentage('-38%') },
-				{ category: 'ΠΡΟΣΦΟΡΑ ΚΑΦΕ- BENEFIT CARD', value: parseCurrency('5294,9'), value2024: parseCurrency('4083'), valueChange: parsePercentage('30%'), quantity:2650, quantity2024: 2075, quantityChange: parsePercentage('28%') },
-				{ category: 'HEALTHY MEALS', value: parseCurrency('4149,2'), value2024: parseCurrency('2673'), valueChange: parsePercentage('55%'), quantity:975, quantity2024: 635, quantityChange: parsePercentage('54%') },
-				{ category: 'ΧΥΜΟΙ ΣΥΣΚΕΥΑΣΜΕΝΟΙ', value: parseCurrency('3256,24'), value2024: parseCurrency('2648'), valueChange: parsePercentage('23%'), quantity:1162, quantity2024: 953, quantityChange: parsePercentage('22%') },
-				{ category: 'ΣΤΙΓΜΙΑΙΟΣ', value: parseCurrency('3117,69'), value2024: parseCurrency('3252'), valueChange: parsePercentage('-4%'), quantity:1603, quantity2024: 1731, quantityChange: parsePercentage('-7%') },
-				{ category: 'ΑΝΑΨΥΚΤΙΚΑ ΚΟΥΤΙ', value: parseCurrency('2635,32'), value2024: parseCurrency('2462'), valueChange: parsePercentage('7%'), quantity:1495, quantity2024: 1405, quantityChange: parsePercentage('6%') },
-				{ category: 'ΑΡΤΟΓΛΥΚΙΣΜΑΤΑ', value: parseCurrency('2208,09'), value2024: parseCurrency('1813'), valueChange: parsePercentage('22%'), quantity:976, quantity2024: 919, quantityChange: parsePercentage('6%') },
-				{ category: 'GLUTEN FREE', value: parseCurrency('2152,67'), value2024: parseCurrency('2926'), valueChange: parsePercentage('-26%'), quantity:569, quantity2024: 831, quantityChange: parsePercentage('-32%') },
-				{ category: 'ΓΛΥΚΟΠΩΛΕΙΟΝ', value: parseCurrency('2123,31'), value2024: parseCurrency('1965'), valueChange: parsePercentage('8%'), quantity:601, quantity2024: 656, quantityChange: parsePercentage('-8%') },
-				{ category: 'ΓΑΛΑ ΚΑΚΑΟ', value: parseCurrency('1884,28'), value2024: parseCurrency('2731'), valueChange: parsePercentage('-31%'), quantity:867, quantity2024: 1279, quantityChange: parsePercentage('-32%') },
-				{ category: 'ΓΙΑΟΥΡΤΑΔΙΚΟ', value: parseCurrency('1785,55'), value2024: parseCurrency('1165'), valueChange: parsePercentage('53%'), quantity:486, quantity2024: 327, quantityChange: parsePercentage('49%') },
-				{ category: 'ΕΛΛΗΝΙΚΟΣ', value: parseCurrency('1774,84'), value2024: parseCurrency('1579'), valueChange: parsePercentage('12%'), quantity:813, quantity2024: 736, quantityChange: parsePercentage('10%') },
-				{ category: 'ΓΑΛΑ', value: parseCurrency('1585,85'), value2024: parseCurrency('1456'), valueChange: parsePercentage('9%'), quantity:706, quantity2024: 632, quantityChange: parsePercentage('12%') },
-				{ category: 'ΣΑΛΑΤΕΣ', value: parseCurrency('1226,26'), value2024: parseCurrency('8'), valueChange: parsePercentage('15228%'), quantity:148, quantity2024: 1, quantityChange: parsePercentage('14700%') },
-				{ category: 'ΤΟΡΤΙΓΙΕΣ', value: parseCurrency('1076,57'), value2024: parseCurrency('3705'), valueChange: parsePercentage('-71%'), quantity:343, quantity2024: 1229, quantityChange: parsePercentage('-72%') },
-				{ category: 'ΚΟΥΛΟΥΡΑΚΙΑ', value: parseCurrency('883,57'), value2024: parseCurrency('1011'), valueChange: parsePercentage('-13%'), quantity:746, quantity2024: 912, quantityChange: parsePercentage('-18%') },
-				{ category: 'COMBO ΠΡΟΙΟΝΤΑ', value: parseCurrency('755,7'), value2024: parseCurrency('595'), valueChange: parsePercentage('27%'), quantity:229, quantity2024: 205, quantityChange: parsePercentage('12%') },
-				{ category: 'ΚΡΕΜΟΠΩΛΕΙΟΝ', value: parseCurrency('603,1'), value2024: parseCurrency('1051'), valueChange: parsePercentage('-43%'), quantity:243, quantity2024: 462, quantityChange: parsePercentage('-47%') },
-				{ category: 'ΦΙΛΤΡΟΥ', value: parseCurrency('600,75'), value2024: parseCurrency('644'), valueChange: parsePercentage('-7%'), quantity:241, quantity2024: 283, quantityChange: parsePercentage('-15%') },
-				{ category: 'ΣΟΚΟΛΑΤΑ', value: parseCurrency('497,91'), value2024: parseCurrency('417'), valueChange: parsePercentage('19%'), quantity:184, quantity2024: 161, quantityChange: parsePercentage('14%') },
-				{ category: 'ΚΡΥΟ ΤΣΑΪ', value: parseCurrency('497,4'), value2024: parseCurrency('1086'), valueChange: parsePercentage('-54%'), quantity:204, quantity2024: 386, quantityChange: parsePercentage('-47%') },
-				{ category: 'ΖΕΣΤΟ ΤΣΑΙ', value: parseCurrency('290,36'), value2024: parseCurrency('281'), valueChange: parsePercentage('3%'), quantity:150, quantity2024: 156, quantityChange: parsePercentage('-4%') },
-				{ category: 'ΜΑΡΜΕΛΑΔΕΣ-ΓΛΥΚΑ ΚΟΥΤΑΛΙΟΥ', value: parseCurrency('244,7'), value2024: parseCurrency('155'), valueChange: parsePercentage('58%'), quantity:50, quantity2024: 31, quantityChange: parsePercentage('61%') },
-				{ category: 'MOCACHINO-FREDOCHINO', value: parseCurrency('23,1'), value2024: parseCurrency('29'), valueChange: parsePercentage('-20%'), quantity:7, quantity2024: 9, quantityChange: parsePercentage('-22%') },
-				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΛΑΧΑΝΙΚΩΝ ΓΕΥΜΑ1', value: parseCurrency('22,5'), value2024: parseCurrency('9'), valueChange: parsePercentage('150%'), quantity:3, quantity2024: 1, quantityChange: parsePercentage('200%') },
-				{ category: 'ΨΩΜΙΑ', value: parseCurrency('9'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:30, quantity2024: 1, quantityChange: parsePercentage('2900%') },
+				{ category: 'ΣΑΝΤΟΥΪΤΣ', value: parseCurrency('114276,35'), value2024: parseCurrency('45627'), valueChange: parsePercentage('150%'), quantity:31713, quantity2024: 13093, quantityChange: parsePercentage('142%') },
+				{ category: 'ΕΣΠΡΕΣΣΟ', value: parseCurrency('87638,2'), value2024: parseCurrency('38509'), valueChange: parsePercentage('128%'), quantity:36777, quantity2024: 17257, quantityChange: parsePercentage('113%') },
+				{ category: 'ΠΙΤΑΚΙΑ-ΟΡΘ. ΠΙΤΕΣ', value: parseCurrency('61263,41'), value2024: parseCurrency('22340'), valueChange: parsePercentage('174%'), quantity:3993, quantity2024: 2414, quantityChange: parsePercentage('65%') },
+				{ category: 'ΠΙΤΕΣ', value: parseCurrency('54774,08'), value2024: parseCurrency('18281'), valueChange: parsePercentage('200%'), quantity:21848, quantity2024: 7666, quantityChange: parsePercentage('185%') },
+				{ category: 'ΚΑΠΟΥΤΣΙΝΟ', value: parseCurrency('50173,05'), value2024: parseCurrency('18653'), valueChange: parsePercentage('169%'), quantity:19016, quantity2024: 7591, quantityChange: parsePercentage('151%') },
+				{ category: 'ΑΡΤΟΖΥΜΕΣ', value: parseCurrency('33146,88'), value2024: parseCurrency('12288'), valueChange: parsePercentage('170%'), quantity:34099, quantity2024: 11342, quantityChange: parsePercentage('201%') },
+				{ category: 'ΜΠΟΥΓΑΤΣΑ', value: parseCurrency('25456,87'), value2024: parseCurrency('12124'), valueChange: parsePercentage('110%'), quantity:9901, quantity2024: 4742, quantityChange: parsePercentage('109%') },
+				{ category: 'GOODBUY ΠΡΟϊΟΝΤΑ-ΜΠΑΡΕΣ', value: parseCurrency('23173,23'), value2024: parseCurrency('6859'), valueChange: parsePercentage('238%'), quantity:1359, quantity2024: 553, quantityChange: parsePercentage('146%') },
+				{ category: 'ΑΝΑΨΥΚΤΙΚΑ ΜΠΟΥΚΑΛΙ', value: parseCurrency('16100,19'), value2024: parseCurrency('6268'), valueChange: parsePercentage('157%'), quantity:30666, quantity2024: 11509, quantityChange: parsePercentage('166%') },
+				{ category: 'ΧΥΜΟΙ ΦΥΣΙΚΟΙ', value: parseCurrency('14080,61'), value2024: parseCurrency('6941'), valueChange: parsePercentage('103%'), quantity:4819, quantity2024: 2493, quantityChange: parsePercentage('93%') },
+				{ category: 'ΠΡΟΣΦΟΡΑ ΚΑΦΕ- BENEFIT CARD', value: parseCurrency('12700,85'), value2024: parseCurrency('6971'), valueChange: parsePercentage('82%'), quantity:6326, quantity2024: 3570, quantityChange: parsePercentage('77%') },
+				{ category: 'ΕΛΛΗΝΙΚΟΣ', value: parseCurrency('8594,57'), value2024: parseCurrency('4219'), valueChange: parsePercentage('104%'), quantity:3947, quantity2024: 1949, quantityChange: parsePercentage('103%') },
+				{ category: 'ΓΛΥΚΟΠΩΛΕΙΟΝ', value: parseCurrency('8299,91'), value2024: parseCurrency('2761'), valueChange: parsePercentage('201%'), quantity:2829, quantity2024: 963, quantityChange: parsePercentage('194%') },
+				{ category: 'ΚΡΟΥΑΣΑΝ', value: parseCurrency('7262,66'), value2024: parseCurrency('1860'), valueChange: parsePercentage('290%'), quantity:4252, quantity2024: 1686, quantityChange: parsePercentage('152%') },
+				{ category: 'ΣΤΙΓΜΙΑΙΟΣ', value: parseCurrency('6972,23'), value2024: parseCurrency('3454'), valueChange: parsePercentage('102%'), quantity:3572, quantity2024: 1816, quantityChange: parsePercentage('97%') },
+				{ category: 'PIZZA BAR', value: parseCurrency('6875,18'), value2024: parseCurrency('0'), valueChange: parsePercentage('100%'), quantity:2449, quantity2024: 0, quantityChange: parsePercentage('100%') },
+				{ category: 'ΧΥΜΟΙ ΣΥΣΚΕΥΑΣΜΕΝΟΙ', value: parseCurrency('6848,92'), value2024: parseCurrency('2811'), valueChange: parsePercentage('144%'), quantity:2536, quantity2024: 1057, quantityChange: parsePercentage('140%') },
+				{ category: 'HEALTHY MEALS', value: parseCurrency('6514,81'), value2024: parseCurrency('2820'), valueChange: parsePercentage('131%'), quantity:1807, quantity2024: 837, quantityChange: parsePercentage('116%') },
+				{ category: 'ΑΡΤΟΓΛΥΚΙΣΜΑΤΑ', value: parseCurrency('4822,82'), value2024: parseCurrency('3021'), valueChange: parsePercentage('60%'), quantity:2474, quantity2024: 1543, quantityChange: parsePercentage('60%') },
+				{ category: 'ΓΙΑΟΥΡΤΑΔΙΚΟ', value: parseCurrency('4548,72'), value2024: parseCurrency('1331'), valueChange: parsePercentage('242%'), quantity:1290, quantity2024: 368, quantityChange: parsePercentage('251%') },
+				{ category: 'ΦΙΛΤΡΟΥ', value: parseCurrency('4195,16'), value2024: parseCurrency('1362'), valueChange: parsePercentage('208%'), quantity:1802, quantity2024: 594, quantityChange: parsePercentage('203%') },
+				{ category: 'ΣΟΚΟΛΑΤΑ', value: parseCurrency('3588,6'), value2024: parseCurrency('972'), valueChange: parsePercentage('269%'), quantity:1343, quantity2024: 372, quantityChange: parsePercentage('261%') },
+				{ category: 'ΤΟΡΤΙΓΙΕΣ', value: parseCurrency('3448,78'), value2024: parseCurrency('2587'), valueChange: parsePercentage('33%'), quantity:1114, quantity2024: 886, quantityChange: parsePercentage('26%') },
+				{ category: 'ΚΡΕΜΟΠΩΛΕΙΟΝ', value: parseCurrency('2564,35'), value2024: parseCurrency('1400'), valueChange: parsePercentage('83%'), quantity:1167, quantity2024: 629, quantityChange: parsePercentage('86%') },
+				{ category: 'ΓΑΛΑ ΚΑΚΑΟ', value: parseCurrency('1895,97'), value2024: parseCurrency('909'), valueChange: parsePercentage('109%'), quantity:1013, quantity2024: 504, quantityChange: parsePercentage('101%') },
+				{ category: 'ΓΑΛΑ', value: parseCurrency('1881,54'), value2024: parseCurrency('667'), valueChange: parsePercentage('182%'), quantity:807, quantity2024: 286, quantityChange: parsePercentage('182%') },
+				{ category: 'ΑΝΑΨΥΚΤΙΚΑ ΚΟΥΤΙ', value: parseCurrency('1800,51'), value2024: parseCurrency('1044'), valueChange: parsePercentage('72%'), quantity:1066, quantity2024: 615, quantityChange: parsePercentage('73%') },
+				{ category: 'ΖΕΣΤΟ ΤΣΑΙ', value: parseCurrency('1658,66'), value2024: parseCurrency('455'), valueChange: parsePercentage('265%'), quantity:849, quantity2024: 254, quantityChange: parsePercentage('234%') },
+				{ category: 'ΚΟΥΛΟΥΡΑΚΙΑ', value: parseCurrency('1490,47'), value2024: parseCurrency('1020'), valueChange: parsePercentage('46%'), quantity:1386, quantity2024: 946, quantityChange: parsePercentage('47%') },
+				{ category: 'ΚΡΥΟ ΤΣΑΪ', value: parseCurrency('1044,44'), value2024: parseCurrency('736'), valueChange: parsePercentage('42%'), quantity:441, quantity2024: 213, quantityChange: parsePercentage('107%') },
+				{ category: 'ΕΠΟΧΙΑΚΑ ΠΡΟΙΟΝΤΑ', value: parseCurrency('913,87'), value2024: parseCurrency('226'), valueChange: parsePercentage('304%'), quantity:72, quantity2024: 19, quantityChange: parsePercentage('279%') },
+				{ category: 'COMBO ΠΡΟΙΟΝΤΑ', value: parseCurrency('719'), value2024: parseCurrency('734'), valueChange: parsePercentage('-2%'), quantity:242, quantity2024: 253, quantityChange: parsePercentage('-4%') },
+				{ category: 'ΣΑΛΑΤΕΣ', value: parseCurrency('691,35'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:108, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΣΚΡΟΤΣΙΑΡΕΛΑ', value: parseCurrency('607,19'), value2024: parseCurrency('158'), valueChange: parsePercentage('284%'), quantity:153, quantity2024: 41, quantityChange: parsePercentage('273%') },
+				{ category: 'ΜΠΥΡΕΣ', value: parseCurrency('288,5'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:69, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΜΑΡΜΕΛΑΔΕΣ-ΓΛΥΚΑ ΚΟΥΤΑΛΙΟΥ', value: parseCurrency('115,28'), value2024: parseCurrency('19'), valueChange: parsePercentage('507%'), quantity:25, quantity2024: 4, quantityChange: parsePercentage('525%') },
+				{ category: 'ΛΕΥΚΑ ΚΡΑΣΙΑ', value: parseCurrency('64'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:16, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'MOCACHINO-FREDOCHINO', value: parseCurrency('63,69'), value2024: parseCurrency('36'), valueChange: parsePercentage('77%'), quantity:20, quantity2024: 12, quantityChange: parsePercentage('67%') },
+				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΛΑΧΑΝΙΚΩΝ ΓΕΥΜΑ1', value: parseCurrency('51,35'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:7, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΚΟΚΚΙΝΑ ΚΡΑΣΙΑ', value: parseCurrency('15,2'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:4, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΡΟΖΕ ΚΡΑΣΙΑ', value: parseCurrency('4'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:1, quantity2024: 0, quantityChange: parsePercentage('0%') },
             ],
             sandwichCategories: [
-				{ category: 'ΜΠΑΚΕΤΑ ΦΙΛΕΤΟ ΚΟΤΟΠΟΥΛΟ ΕΜΜΕΝΤΑΛ', value: parseCurrency('7924,8'), value2024: parseCurrency('8980'), valueChange: parsePercentage('-12%'), quantity:2049, quantity2024: 2442, quantityChange: parsePercentage('-16%') },
-				{ category: 'ΣΟΥΣ.ΚΟΥΛΟΥΡΙ ΓΑΛΟΠΟΥΛΑ ΚΑΠΝΙΣΤΗ & ΜΑΝΟΥΡΙ', value: parseCurrency('7263,52'), value2024: parseCurrency('6543'), valueChange: parsePercentage('11%'), quantity:1981, quantity2024: 1875, quantityChange: parsePercentage('6%') },
-				{ category: 'Χ. ΚΑΡΒΕΛΑΚΙ ΚΟΤΟΠΟΥΛΟ-COUNTRY CHICKEN', value: parseCurrency('7603,07'), value2024: parseCurrency('6857'), valueChange: parsePercentage('11%'), quantity:1965, quantity2024: 1858, quantityChange: parsePercentage('6%') },
-				{ category: 'ΜΠΑΚΕΤΑ ΖΑΜΠΟΝ, ΓΚΟΥΝΤΑ', value: parseCurrency('3462,61'), value2024: parseCurrency('3171'), valueChange: parsePercentage('9%'), quantity:1163, quantity2024: 1096, quantityChange: parsePercentage('6%') },
-				{ category: 'Ψ. ΚΟΥΡΚΟΥΜΑ ΚΟΛΟΚΥΘΟΣΠΟΡΟ & ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('3011,98'), value2024: parseCurrency('3271'), valueChange: parsePercentage('-8%'), quantity:783, quantity2024: 864, quantityChange: parsePercentage('-9%') },
-				{ category: 'ΚΑΡΒΕΛΑΚΙ HOVIS ΓΑΛΟΠΟΥΛΑ ΜΠΑΧΤΣΕ, CREAM CHEESE', value: parseCurrency('2451,77'), value2024: parseCurrency('3008'), valueChange: parsePercentage('-18%'), quantity:708, quantity2024: 892, quantityChange: parsePercentage('-21%') },
-				{ category: 'PANIS OLEUM RUSTICALE ΓΑΛΟΠΟΥΛΑ ΦΙΛΕΤΟ ΕΛΑΙΟΛΑΔΟ', value: parseCurrency('3065,61'), value2024: parseCurrency('2174'), valueChange: parsePercentage('41%'), quantity:772, quantity2024: 546, quantityChange: parsePercentage('41%') },
-				{ category: 'ΟΛ.ΜΠΑΓΚΕΤΑ ΧΟΙΡΟΜΕΡΙ', value: parseCurrency('2687,07'), value2024: parseCurrency('2048'), valueChange: parsePercentage('31%'), quantity:630, quantity2024: 489, quantityChange: parsePercentage('29%') },
-				{ category: 'ΚΑΡΒΕΛΑΚΙ HOVIS ΠΡΟΣΟΥΤΟ ΚΡΕΜΑ ΠΑΡΜΕΖΑΝΑ', value: parseCurrency('1985,55'), value2024: parseCurrency('2464'), valueChange: parsePercentage('-19%'), quantity:574, quantity2024: 749, quantityChange: parsePercentage('-23%') },
-				{ category: 'PANIS OLEUM SICILIANA ΜΟΤΣΑΡΕΛΑ', value: parseCurrency('2115,6'), value2024: parseCurrency('2188'), valueChange: parsePercentage('-3%'), quantity:532, quantity2024: 563, quantityChange: parsePercentage('-6%') },
-				{ category: 'ΧΑΡΟΥΠΙ Π.ΓΡΑΒΙΕΡΑ ΚΡΗΤΗΣ', value: parseCurrency('1783,86'), value2024: parseCurrency('1886'), valueChange: parsePercentage('-5%'), quantity:459, quantity2024: 483, quantityChange: parsePercentage('-5%') },
-				{ category: 'PANIS OLEUM RUSTICALE ΜΑΝΙΤΑΡΙΑ ΠΛΕΥΡΩΤΟΥΣ', value: parseCurrency('1229,78'), value2024: parseCurrency('1130'), valueChange: parsePercentage('9%'), quantity:364, quantity2024: 342, quantityChange: parsePercentage('6%') },
-				{ category: 'PLANT BASED Ψ.ΛΑΧ & ΦΕΤΑ.ΣΕ Χ.ΜΠΑΓΚΕΤΑ ΟΛ.', value: parseCurrency('1154,67'), value2024: parseCurrency('1158'), valueChange: parsePercentage('0%'), quantity:351, quantity2024: 361, quantityChange: parsePercentage('-3%') },
-				{ category: 'PLANT BASED ΜΑΝΙΤΑΡΙΑ & ΝΤΟΜ.ΣΕ Ψ.ΧΑΡΟΥΠΙΟΥ', value: parseCurrency('694,05'), value2024: parseCurrency('786'), valueChange: parsePercentage('-12%'), quantity:200, quantity2024: 225, quantityChange: parsePercentage('-11%') },
-				{ category: 'ΟΛ.ΜΠΑΓΚΕΤΑ ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('678,21'), value2024: parseCurrency('400'), valueChange: parsePercentage('70%'), quantity:176, quantity2024: 108, quantityChange: parsePercentage('63%') },
-				{ category: 'ΧΑΡΟΥΠΙ ΦΕΤΑ & ΤΟΜΑΤΑ', value: parseCurrency('391,2'), value2024: parseCurrency('585'), valueChange: parsePercentage('-33%'), quantity:98, quantity2024: 150, quantityChange: parsePercentage('-35%') },
-				{ category: 'PLANT BASED ΖΑΜΠΟΝ & ΓΚΟΥΝΤΑ ΣΕ Χ.ΜΠΑΓΚΕΤΑ', value: parseCurrency('714,36'), value2024: parseCurrency('1036'), valueChange: parsePercentage('-31%'), quantity:206, quantity2024: 297, quantityChange: parsePercentage('-31%') },
-				{ category: 'ΟΛ.ΜΠΑΓΚΕΤΑ ΣΑΛΑΜΙ ΜΠΥΡΑΣ ΓΑΛΟΜΥΖΗΘΡΑ', value: parseCurrency('298,41'), value2024: parseCurrency('554'), valueChange: parsePercentage('-46%'), quantity:103, quantity2024: 198, quantityChange: parsePercentage('-48%') },
-				{ category: 'PANIS OLEUM NATURALE ΓΑΛΟΠΟΥΛΑ ΦΙΛΕΤΟ', value: parseCurrency('210,6'), value2024: parseCurrency('329'), valueChange: parsePercentage('-36%'), quantity:47, quantity2024: 74, quantityChange: parsePercentage('-36%') },
-				{ category: 'Χ. ΚΑΡΒΕΛΑΚΙ ΧΟΙΡΟΜΕΡΙ', value: parseCurrency('355,3'), value2024: parseCurrency('547'), valueChange: parsePercentage('-35%'), quantity:94, quantity2024: 147, quantityChange: parsePercentage('-36%') },
-				{ category: 'PANIS OLEUM SICILIANA ΠΡΟΣΟΥΤΟ CRUDO', value: parseCurrency('797,29'), value2024: parseCurrency('272'), valueChange: parsePercentage('193%'), quantity:365, quantity2024: 136, quantityChange: parsePercentage('168%') },
-				{ category: 'Ψ. ΚΟΥΡΚΟΥΜΑ ΠΡΟΣΟΥΤΟ CRUDO & PESTO ΒΑΣΙΛΙΚΟΥ', value: parseCurrency('656,76'), value2024: parseCurrency('941'), valueChange: parsePercentage('-30%'), quantity:180, quantity2024: 255, quantityChange: parsePercentage('-29%') },
-				{ category: 'ΚΑΡΒΕΛΑΚΙ ΗOVIS MANITAΡΙΑ ΦΟΥΡΝΟΥ (VEGAN)', value: parseCurrency('352'), value2024: parseCurrency('436'), valueChange: parsePercentage('-19%'), quantity:89, quantity2024: 110, quantityChange: parsePercentage('-19%') },
-				{ category: 'PLANT BASED ΠΑΝΤΖΑΡΙ-ΚΑΡΟΤΟ & ΜΠΡΟΚΟΛΟ.ΣΕ Ψ.ΧΑΡΟΥΠΙΟΥ', value: parseCurrency('789,26'), value2024: parseCurrency('512'), valueChange: parsePercentage('54%'), quantity:228, quantity2024: 155, quantityChange: parsePercentage('47%') },
-				{ category: 'PANIS OLEUM NATURALE Φ.ΨΗΤΟ ΚΟΤΟΠΟΥΛΟ ΑΒΟΚΑΝΤΟ', value: parseCurrency('8'), value2024: parseCurrency('385'), valueChange: parsePercentage('-98%'), quantity:2, quantity2024: 99, quantityChange: parsePercentage('-98%') },
-				{ category: 'ΜΠΡΙΟΣ ΚΑΠΝΙΣΤΟΣ ΣΟΛΟΜΟΣ', value: parseCurrency('117,74'), value2024: parseCurrency('101'), valueChange: parsePercentage('17%'), quantity:41, quantity2024: 36, quantityChange: parsePercentage('14%') },
-				{ category: 'ΤΟΡΤΙΓΙΑ ΤΕRIYAKI ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('260,42'), value2024: parseCurrency('943'), valueChange: parsePercentage('-72%'), quantity:90, quantity2024: 339, quantityChange: parsePercentage('-73%') },
-				{ category: 'ΜΠΡΙΟΣ ΖΑΜΠΟΝ Κ.ΓΚΟΥΝΤΑ', value: parseCurrency('363,24'), value2024: parseCurrency('280'), valueChange: parsePercentage('30%'), quantity:102, quantity2024: 78, quantityChange: parsePercentage('31%') },
-				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΚΑΠΝΙΣΤΟ Φ.ΓΑΛΟΠΟΥΛΑΣ', value: parseCurrency('70,65'), value2024: parseCurrency('313'), valueChange: parsePercentage('-77%'), quantity:16, quantity2024: 70, quantityChange: parsePercentage('-77%') },
-				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΚΑΠΝΙΣΤΟ ΣΟΛΟΜΟ', value: parseCurrency('23,1'), value2024: parseCurrency('391'), valueChange: parsePercentage('-94%'), quantity:7, quantity2024: 119, quantityChange: parsePercentage('-94%') },
-				{ category: 'Χ. ΚΑΡΒΕΛΑΚΙ ΣΤΡΑΠΑΤΣΑΔΑ', value: parseCurrency('0'), value2024: parseCurrency('296'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 119, quantityChange: parsePercentage('-100%') },
-				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΓΟΥΑΚΑΜΟΛΕ ΜΕ ΑΥΓΟ', value: parseCurrency('49,4'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:13, quantity2024: 0, quantityChange: parsePercentage('0%') },
-				{ category: 'ΠΟΛΥΣΠΟΡΟ ΚΡΟΥΑΣΑΝ ΠΡΟΣΟΥΤΟ ΚΡΕΜΑ ΤΥΡΙΟΥ', value: parseCurrency('21,6'), value2024: parseCurrency('307'), valueChange: parsePercentage('-93%'), quantity:8, quantity2024: 123, quantityChange: parsePercentage('-93%') },
-				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΠΑΣΤΡΑΜΙ', value: parseCurrency('0'), value2024: parseCurrency('171'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 41, quantityChange: parsePercentage('-100%') },
-				{ category: 'Ψ. ΚΟΥΡΚΟΥΜΑ ΠΑΝΤΖΑΡΙ & ΓΑΛΟΜΥΖΗΘΡΑ ΚΡΗΤΗΣ', value: parseCurrency('4,5'), value2024: parseCurrency('41'), valueChange: parsePercentage('-89%'), quantity:1, quantity2024: 9, quantityChange: parsePercentage('-89%') },
-				{ category: 'ΤΟΡΤΙΓΙΑ MEXICAN ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('0'), value2024: parseCurrency('14'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 3, quantityChange: parsePercentage('-100%') },
-				{ category: 'ΤΟΡΤΙΓΙΑ ΧΟΙΡΟΜΕΡΙ ΑΠΟΞ.ΣΥΚΟ', value: parseCurrency('0'), value2024: parseCurrency('38'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 10, quantityChange: parsePercentage('-100%') },
-				{ category: 'ΤΟΡΤΙΓΙΑ ΣΑΛΑΜΙ ΜΠΥΡΑΣ', value: parseCurrency('0'), value2024: parseCurrency('136'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 36, quantityChange: parsePercentage('-100%') },
-				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΝΤΖΑΡΙΟΥ ΣΕ PANIS OLEUM RUSTICALE', value: parseCurrency('4'), value2024: parseCurrency('24'), valueChange: parsePercentage('-83%'), quantity:1, quantity2024: 6, quantityChange: parsePercentage('-83%') },
-				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΣΟΛΟΜΟ & GUACAMOLE', value: parseCurrency('16'), value2024: parseCurrency('103'), valueChange: parsePercentage('-84%'), quantity:4, quantity2024: 26, quantityChange: parsePercentage('-85%') },
-				{ category: 'ΜΠΡΙΟΣ ΜΟΤΣΑΡΕΛΑ', value: parseCurrency('15,6'), value2024: parseCurrency('88'), valueChange: parsePercentage('-82%'), quantity:4, quantity2024: 22, quantityChange: parsePercentage('-82%') },
-				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΝΤΖΑΡΙΟΥ & ΛΑΧ.ΤΟΡΤΙΓΙΑ', value: parseCurrency('0'), value2024: parseCurrency('150'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 43, quantityChange: parsePercentage('-100%') },
-				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΚΙΝΟΑ &Ψ.ΛΑΧ ΤΟΡΤΙΓΙΑ', value: parseCurrency('0'), value2024: parseCurrency('28'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 6, quantityChange: parsePercentage('-100%') },
-				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΤΟΝΟ', value: parseCurrency('22,5'), value2024: parseCurrency('131'), valueChange: parsePercentage('-83%'), quantity:5, quantity2024: 29, quantityChange: parsePercentage('-83%') },
-				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΤΑΤΑΣ & ΛΑΧ. ΤΟΡΤΙΓΙΑ', value: parseCurrency('29,4'), value2024: parseCurrency('8'), valueChange: parsePercentage('268%'), quantity:7, quantity2024: 2, quantityChange: parsePercentage('250%') },
-				{ category: 'PLANT BASED ΦΑΛΑΦΕΛ & Ψ.ΜΕΛΙΤΖΑΝΑ ΣΕ PANIS OLEUM RUSTICALE', value: parseCurrency('0'), value2024: parseCurrency('28'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 8, quantityChange: parsePercentage('-100%') },
-				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΤΑΤΑΣ&ΠΑΤΖΑΡΙΟΥ ΣΕ Ψ.ΚΟΥΡΚΟΥΜΑ', value: parseCurrency('12'), value2024: parseCurrency('216'), valueChange: parsePercentage('-94%'), quantity:3, quantity2024: 54, quantityChange: parsePercentage('-94%') },
-				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΠΑΣΤΡΑΜΙ & WASABI', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
-				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΣΟΛΟΜΟ & COLESLAW', value: parseCurrency('0'), value2024: parseCurrency('42'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 10, quantityChange: parsePercentage('-100%') },
-				{ category: 'PLANT BASED ΦΑΛΑΦΕΛ &Ψ.ΛΑΧ.ΤΟΡΤΙΓΙΑ', value: parseCurrency('0'), value2024: parseCurrency('16'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 4, quantityChange: parsePercentage('-100%') },
-				{ category: 'ΤΟΡΤΙΓΙΑ ΠΡΟΣΟΥΤΟ CRUDO & ΜΟΤΣΑΡΕΛΑ', value: parseCurrency('0'), value2024: parseCurrency('7'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 2, quantityChange: parsePercentage('-100%') },
+				{ category: 'ΣΟΥΣ.ΚΟΥΛΟΥΡΙ ΓΑΛΟΠΟΥΛΑ ΚΑΠΝΙΣΤΗ & ΜΑΝΟΥΡΙ', value: parseCurrency('22838,32'), value2024: parseCurrency('7264'), valueChange: parsePercentage('214%'), quantity:6087, quantity2024: 1994, quantityChange: parsePercentage('205%') },
+				{ category: 'ΜΠΑΚΕΤΑ ΦΙΛΕΤΟ ΚΟΤΟΠΟΥΛΟ ΕΜΜΕΝΤΑΛ', value: parseCurrency('22386,03'), value2024: parseCurrency('8082'), valueChange: parsePercentage('177%'), quantity:6235, quantity2024: 2320, quantityChange: parsePercentage('169%') },
+				{ category: 'Χ. ΚΑΡΒΕΛΑΚΙ ΚΟΤΟΠΟΥΛΟ-COUNTRY CHICKEN', value: parseCurrency('20992,85'), value2024: parseCurrency('8233'), valueChange: parsePercentage('155%'), quantity:5706, quantity2024: 2227, quantityChange: parsePercentage('156%') },
+				{ category: 'ΜΠΑΚΕΤΑ ΖΑΜΠΟΝ, ΓΚΟΥΝΤΑ', value: parseCurrency('6322,63'), value2024: parseCurrency('1170'), valueChange: parsePercentage('440%'), quantity:1848, quantity2024: 352, quantityChange: parsePercentage('425%') },
+				{ category: 'ΧΑΡΟΥΠΙ ΦΕΤΑ & ΤΟΜΑΤΑ', value: parseCurrency('5878,4'), value2024: parseCurrency('2522'), valueChange: parsePercentage('133%'), quantity:1388, quantity2024: 619, quantityChange: parsePercentage('124%') },
+				{ category: 'PANIS OLEUM NATURALE Φ.ΨΗΤΟ ΚΟΤΟΠΟΥΛΟ ΑΒΟΚΑΝΤΟ', value: parseCurrency('5707,02'), value2024: parseCurrency('3196'), valueChange: parsePercentage('79%'), quantity:1960, quantity2024: 1115, quantityChange: parsePercentage('76%') },
+				{ category: 'ΟΛ.ΜΠΑΓΚΕΤΑ ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('4546,45'), value2024: parseCurrency('1680'), valueChange: parsePercentage('171%'), quantity:1189, quantity2024: 439, quantityChange: parsePercentage('171%') },
+				{ category: 'Χ. ΚΑΡΒΕΛΑΚΙ ΧΟΙΡΟΜΕΡΙ', value: parseCurrency('4529,66'), value2024: parseCurrency('3465'), valueChange: parsePercentage('31%'), quantity:1355, quantity2024: 1093, quantityChange: parsePercentage('24%') },
+				{ category: 'PANIS OLEUM RUSTICALE ΓΑΛΟΠΟΥΛΑ ΦΙΛΕΤΟ ΕΛΑΙΟΛΑΔΟ', value: parseCurrency('4509,32'), value2024: parseCurrency('466'), valueChange: parsePercentage('868%'), quantity:1158, quantity2024: 120, quantityChange: parsePercentage('865%') },
+				{ category: 'PANIS OLEUM NATURALE ΓΑΛΟΠΟΥΛΑ ΦΙΛΕΤΟ', value: parseCurrency('3286,49'), value2024: parseCurrency('2035'), valueChange: parsePercentage('61%'), quantity:870, quantity2024: 548, quantityChange: parsePercentage('59%') },
+				{ category: 'ΜΠΡΙΟΣ ΚΑΠΝΙΣΤΟΣ ΣΟΛΟΜΟΣ', value: parseCurrency('2599,95'), value2024: parseCurrency('1057'), valueChange: parsePercentage('146%'), quantity:658, quantity2024: 269, quantityChange: parsePercentage('145%') },
+				{ category: 'ΧΑΡΟΥΠΙ Π.ΓΡΑΒΙΕΡΑ ΚΡΗΤΗΣ', value: parseCurrency('1921,55'), value2024: parseCurrency('771'), valueChange: parsePercentage('149%'), quantity:504, quantity2024: 199, quantityChange: parsePercentage('153%') },
+				{ category: 'Ψ. ΚΟΥΡΚΟΥΜΑ ΚΟΛΟΚΥΘΟΣΠΟΡΟ & ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('1656,25'), value2024: parseCurrency('936'), valueChange: parsePercentage('77%'), quantity:525, quantity2024: 300, quantityChange: parsePercentage('75%') },
+				{ category: 'PANIS OLEUM RUSTICALE ΜΑΝΙΤΑΡΙΑ ΠΛΕΥΡΩΤΟΥΣ', value: parseCurrency('1524,07'), value2024: parseCurrency('86'), valueChange: parsePercentage('1672%'), quantity:345, quantity2024: 19, quantityChange: parsePercentage('1716%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΚΑΠΝΙΣΤΟ Φ.ΓΑΛΟΠΟΥΛΑΣ', value: parseCurrency('1439,2'), value2024: parseCurrency('1047'), valueChange: parsePercentage('37%'), quantity:522, quantity2024: 376, quantityChange: parsePercentage('39%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΤΕRIYAKI ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('1290,11'), value2024: parseCurrency('38'), valueChange: parsePercentage('3295%'), quantity:350, quantity2024: 10, quantityChange: parsePercentage('3400%') },
+				{ category: 'PLANT BASED Ψ.ΛΑΧ & ΦΕΤΑ.ΣΕ Χ.ΜΠΑΓΚΕΤΑ ΟΛ.', value: parseCurrency('1151,99'), value2024: parseCurrency('753'), valueChange: parsePercentage('53%'), quantity:607, quantity2024: 399, quantityChange: parsePercentage('52%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΓΟΥΑΚΑΜΟΛΕ ΜΕ ΑΥΓΟ', value: parseCurrency('1032,46'), value2024: parseCurrency('46'), valueChange: parsePercentage('2144%'), quantity:316, quantity2024: 14, quantityChange: parsePercentage('2157%') },
+				{ category: 'ΜΠΡΙΟΣ ΜΟΤΣΑΡΕΛΑ', value: parseCurrency('1003,15'), value2024: parseCurrency('92'), valueChange: parsePercentage('990%'), quantity:269, quantity2024: 23, quantityChange: parsePercentage('1070%') },
+				{ category: 'ΟΛ.ΜΠΑΓΚΕΤΑ ΧΟΙΡΟΜΕΡΙ', value: parseCurrency('532,63'), value2024: parseCurrency('641'), valueChange: parsePercentage('-17%'), quantity:161, quantity2024: 198, quantityChange: parsePercentage('-19%') },
+				{ category: 'ΜΠΡΙΟΣ ΖΑΜΠΟΝ Κ.ΓΚΟΥΝΤΑ', value: parseCurrency('506,62'), value2024: parseCurrency('528'), valueChange: parsePercentage('-4%'), quantity:155, quantity2024: 157, quantityChange: parsePercentage('-1%') },
+				{ category: 'Ψ. ΚΟΥΡΚΟΥΜΑ ΠΡΟΣΟΥΤΟ CRUDO & PESTO ΒΑΣΙΛΙΚΟΥ', value: parseCurrency('380,08'), value2024: parseCurrency('35'), valueChange: parsePercentage('986%'), quantity:119, quantity2024: 10, quantityChange: parsePercentage('1090%') },
+				{ category: 'PANIS OLEUM SICILIANA ΠΡΟΣΟΥΤΟ CRUDO', value: parseCurrency('290,56'), value2024: parseCurrency('1068'), valueChange: parsePercentage('-73%'), quantity:84, quantity2024: 298, quantityChange: parsePercentage('-72%') },
+				{ category: 'ΚΑΡΒΕΛΑΚΙ HOVIS ΠΡΟΣΟΥΤΟ ΚΡΕΜΑ ΠΑΡΜΕΖΑΝΑ', value: parseCurrency('246,08'), value2024: parseCurrency('1065'), valueChange: parsePercentage('-77%'), quantity:88, quantity2024: 383, quantityChange: parsePercentage('-77%') },
+				{ category: 'ΠΟΛΥΣΠΟΡΟ ΚΡΟΥΑΣΑΝ ΠΡΟΣΟΥΤΟ ΚΡΕΜΑ ΤΥΡΙΟΥ', value: parseCurrency('183,9'), value2024: parseCurrency('249'), valueChange: parsePercentage('-26%'), quantity:50, quantity2024: 68, quantityChange: parsePercentage('-26%') },
+				{ category: 'Ψ. ΚΟΥΡΚΟΥΜΑ ΠΑΝΤΖΑΡΙ & ΓΑΛΟΜΥΖΗΘΡΑ ΚΡΗΤΗΣ', value: parseCurrency('124,51'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:51, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PANIS OLEUM SICILIANA ΜΟΤΣΑΡΕΛΑ', value: parseCurrency('106,4'), value2024: parseCurrency('167'), valueChange: parsePercentage('-36%'), quantity:28, quantity2024: 43, quantityChange: parsePercentage('-35%') },
+				{ category: 'ΚΑΡΒΕΛΑΚΙ HOVIS ΓΑΛΟΠΟΥΛΑ ΜΠΑΧΤΣΕ, CREAM CHEESE', value: parseCurrency('81,41'), value2024: parseCurrency('238'), valueChange: parsePercentage('-66%'), quantity:21, quantity2024: 60, quantityChange: parsePercentage('-65%') },
+				{ category: 'Χ. ΚΑΡΒΕΛΑΚΙ ΣΤΡΑΠΑΤΣΑΔΑ', value: parseCurrency('79,12'), value2024: parseCurrency('4'), valueChange: parsePercentage('1878%'), quantity:18, quantity2024: 1, quantityChange: parsePercentage('1700%') },
+				{ category: 'PLANT BASED ΠΑΝΤΖΑΡΙ-ΚΑΡΟΤΟ & ΜΠΡΟΚΟΛΟ.ΣΕ Ψ.ΧΑΡΟΥΠΙΟΥ', value: parseCurrency('64'), value2024: parseCurrency('439'), valueChange: parsePercentage('-85%'), quantity:16, quantity2024: 116, quantityChange: parsePercentage('-86%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΚΑΠΝΙΣΤΟ ΣΟΛΟΜΟ', value: parseCurrency('51,88'), value2024: parseCurrency('14'), valueChange: parsePercentage('271%'), quantity:19, quantity2024: 5, quantityChange: parsePercentage('280%') },
+				{ category: 'PLANT BASED ΜΑΝΙΤΑΡΙΑ & ΝΤΟΜ.ΣΕ Ψ.ΧΑΡΟΥΠΙΟΥ', value: parseCurrency('51,2'), value2024: parseCurrency('55'), valueChange: parsePercentage('-7%'), quantity:14, quantity2024: 14, quantityChange: parsePercentage('0%') },
+				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΣΟΛΟΜΟ & GUACAMOLE', value: parseCurrency('48'), value2024: parseCurrency('207'), valueChange: parsePercentage('-77%'), quantity:10, quantity2024: 44, quantityChange: parsePercentage('-77%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ MEXICAN ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('47,5'), value2024: parseCurrency('4'), valueChange: parsePercentage('1088%'), quantity:13, quantity2024: 1, quantityChange: parsePercentage('1200%') },
+				{ category: 'PLANT BASED ΦΑΛΑΦΕΛ & Ψ.ΜΕΛΙΤΖΑΝΑ ΣΕ PANIS OLEUM RUSTICALE', value: parseCurrency('45,6'), value2024: parseCurrency('248'), valueChange: parsePercentage('-82%'), quantity:12, quantity2024: 67, quantityChange: parsePercentage('-82%') },
+				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΠΑΣΤΡΑΜΙ', value: parseCurrency('36,3'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:11, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΤΑΤΑΣ & ΛΑΧ. ΤΟΡΤΙΓΙΑ', value: parseCurrency('31,5'), value2024: parseCurrency('81'), valueChange: parsePercentage('-61%'), quantity:7, quantity2024: 18, quantityChange: parsePercentage('-61%') },
+				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΤΑΤΑΣ&ΠΑΤΖΑΡΙΟΥ ΣΕ Ψ.ΚΟΥΡΚΟΥΜΑ', value: parseCurrency('31,2'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:8, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΝΤΖΑΡΙΟΥ & ΛΑΧ.ΤΟΡΤΙΓΙΑ', value: parseCurrency('28'), value2024: parseCurrency('46'), valueChange: parsePercentage('-39%'), quantity:8, quantity2024: 13, quantityChange: parsePercentage('-38%') },
+				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΣΟΛΟΜΟ & COLESLAW', value: parseCurrency('25'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:10, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PLANT BASED ΦΑΛΑΦΕΛ &Ψ.ΛΑΧ.ΤΟΡΤΙΓΙΑ', value: parseCurrency('22,2'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:6, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PLANT BASED ΖΑΜΠΟΝ & ΓΚΟΥΝΤΑ ΣΕ Χ.ΜΠΑΓΚΕΤΑ', value: parseCurrency('18'), value2024: parseCurrency('32'), valueChange: parsePercentage('-44%'), quantity:4, quantity2024: 7, quantityChange: parsePercentage('-43%') },
+				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΠΑΣΤΡΑΜΙ & WASABI', value: parseCurrency('16'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:4, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΚΑΡΒΕΛΑΚΙ ΗOVIS MANITAΡΙΑ ΦΟΥΡΝΟΥ (VEGAN)', value: parseCurrency('14'), value2024: parseCurrency('4'), valueChange: parsePercentage('250%'), quantity:4, quantity2024: 1, quantityChange: parsePercentage('300%') },
+				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΚΙΝΟΑ &Ψ.ΛΑΧ ΤΟΡΤΙΓΙΑ', value: parseCurrency('12,15'), value2024: parseCurrency('58'), valueChange: parsePercentage('-79%'), quantity:3, quantity2024: 13, quantityChange: parsePercentage('-77%') },
+				{ category: 'PANIS OLEUM NATURALE ΠΡΟΣΟΥΤΟ CRUDO & ΜΑΝΙΤΑΡΙΑ ΦΟΥΡΝΟΥ', value: parseCurrency('10,8'), value2024: parseCurrency('43'), valueChange: parsePercentage('-75%'), quantity:3, quantity2024: 12, quantityChange: parsePercentage('-75%') },
+				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΝΤΖΑΡΙΟΥ ΣΕ PANIS OLEUM RUSTICALE', value: parseCurrency('8,4'), value2024: parseCurrency('11'), valueChange: parsePercentage('-24%'), quantity:2, quantity2024: 3, quantityChange: parsePercentage('-33%') },
+				{ category: 'PANIS OLEUM RUSTICALE ΦΑΛΑΦΕΛ ΜΕ ΣΩΣ ΤΑΧΙΝΙ', value: parseCurrency('8,19'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:4, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΣΑΛΑΜΙ ΜΠΥΡΑΣ', value: parseCurrency('4'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:1, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΧΟΙΡΟΜΕΡΙ ΑΠΟΞ.ΣΥΚΟ', value: parseCurrency('4'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:1, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΤΟΝΟ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
 				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΨΩΜΙ ΜΕ ΤΟΝΟ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
-				{ category: 'PANIS OLEUM RUSTICALE ΠΑΣΤΡΑΜΙ ΔΡΑΜΑΣ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΣΟΥΣ.ΚΟΥΛΟΥΡΙ ΦΑΛΑΦΕΛ (VEGAN)', value: parseCurrency('0'), value2024: parseCurrency('4'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 1, quantityChange: parsePercentage('-100%') },
 				{ category: 'ΣΟΥΣ.ΚΟΥΛΟΥΡΙ Π.ΓΡΑΒΙΕΡΑ ΚΡΗΤΗΣ & Ψ. ΜΑΝΙΤΑΡΙΑ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
-				{ category: 'PANIS OLEUM SICILIANA ΜΕ ΚΟΛΟΚ/ΔΕΣ ΝΗΣΤ.ΤΥΡΙ,ΝΤΟΜ.ΦΟΥΡ.', value: parseCurrency('0'), value2024: parseCurrency('12'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 3, quantityChange: parsePercentage('-100%') },
-				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΦΑΛΑΦΕΛ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
-				{ category: 'PANIS OLEUM NATURALE ΠΡΟΣΟΥΤΟ CRUDO & ΜΑΝΙΤΑΡΙΑ ΦΟΥΡΝΟΥ', value: parseCurrency('0'), value2024: parseCurrency('4'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 1, quantityChange: parsePercentage('-100%') },
-				{ category: 'ΣΟΥΣ.ΚΟΥΛΟΥΡΙ ΦΑΛΑΦΕΛ (VEGAN)', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
-				{ category: 'PANIS OLEUM RUSTICALE ΜΕ ΝΗΣΤΙΣΙΜΟ ΛΕΥΚΟ ΤΥΡΙ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
-				{ category: 'PANIS OLEUM RUSTICALE ΦΑΛΑΦΕΛ ΜΕ ΣΩΣ ΤΑΧΙΝΙ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
-				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΦΑΣΟΛΙΑ ΜΕXICAN VEGAN', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΟΛ.ΜΠΑΓΚΕΤΑ ΣΑΛΑΜΙ ΜΠΥΡΑΣ ΓΑΛΟΜΥΖΗΘΡΑ', value: parseCurrency('0'), value2024: parseCurrency('8'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 2, quantityChange: parsePercentage('-100%') },
 				{ category: 'ΚΑΡΒΕΛΑΚΙ ΚΙΝΟΑ ΜΕ ΤΟΝΟ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΠΡΟΣΟΥΤΟ CRUDO & ΜΟΤΣΑΡΕΛΑ', value: parseCurrency('0'), value2024: parseCurrency('25'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 7, quantityChange: parsePercentage('-100%') },
+				{ category: 'PANIS OLEUM SICILIANA ΜΕ ΚΟΛΟΚ/ΔΕΣ ΝΗΣΤ.ΤΥΡΙ,ΝΤΟΜ.ΦΟΥΡ.', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PANIS OLEUM RUSTICALE ΠΑΣΤΡΑΜΙ ΔΡΑΜΑΣ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PANIS OLEUM RUSTICALE ΜΕ ΝΗΣΤΙΣΙΜΟ ΛΕΥΚΟ ΤΥΡΙ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΦΑΛΑΦΕΛ', value: parseCurrency('0'), value2024: parseCurrency('4'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 1, quantityChange: parsePercentage('-100%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΦΑΣΟΛΙΑ ΜΕXICAN VEGAN', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
 				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΚΙΝΟΑ- ΨΗΤΑ ΛΑΧΑΝΙΚΑ VEGAN', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
-            ],
+           ],
         };
 
         // Calculate overall totals from allCategories
