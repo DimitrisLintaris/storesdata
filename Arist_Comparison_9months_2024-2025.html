@@ -47,12 +47,16 @@
         }
     </style>
 </head>
+	    <div style="text-align: center; margin-top: 20px;">
+        <a href="AgiasSofias.html">
+            <i class="fas fa-home"></i> 🏠Επιστροφή στην αρχική σελίδα
+        </a>
 <body class="text-gray-800">
 
     <div class="container mx-auto p-4 md:p-8">
         
         <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2" id="infographic-title">Ανάλυση Πωλήσεων Ιανουάριος - Αύγουστος 2024-2025</h1>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2" id="infographic-title">Ανάλυση Πωλήσεων Ιανουάριος - Σεπτέμβριος 2024-2025</h1>
             <p class="text-lg text-gray-600">Βασικές Τάσεις, Προκλήσεις & Ευκαιρίες Ανάπτυξης</p>
         </header>
 
@@ -317,7 +321,7 @@
          */
         function renderInfographic(data) {
             // Update title
-            document.getElementById('infographic-title').textContent = `Ανάλυση Πωλήσεων ${data.storeName} Ιανουάριος - Αύγουστος 2024-2025`;
+            document.getElementById('infographic-title').textContent = `Ανάλυση Πωλήσεων ${data.storeName} Ιανουάριος - Σεπτέμβριος 2024-2025`;
 
             // Update KPI values
             const overallValueChange = data.overall.totalValue2024 === 0 ? 0 : ((data.overall.totalValue2025 - data.overall.totalValue2024) / data.overall.totalValue2024) * 100;
@@ -493,7 +497,7 @@ scatterChartInstance = new Chart(document.getElementById('scatterChart'), {
     data: {
         labels: data.allCategories.map(d => wrapLabel(d.category)),
         datasets: [{
-            label: 'Κατηγορίες Πωλήσεων Ιανουάριος - Αύγουστος 2025',
+            label: 'Κατηγορίες Πωλήσεων Ιανουάριος - Σεπτέμβριος 2025',
             data: data.allCategories.map(d => ({ 
                 x: d.quantity, 
                 y: d.value, 
@@ -1009,3 +1013,4 @@ scatterChartInstance = new Chart(document.getElementById('scatterChart'), {
     </script>
 </body>
 </html>
+
