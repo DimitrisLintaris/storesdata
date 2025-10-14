@@ -317,7 +317,7 @@
          */
         function renderInfographic(data) {
             // Update title
-            document.getElementById('infographic-title').textContent = `Ανάλυση Πωλήσεων ${data.storeName} Ιανουάριος - Αύγουστος 2024-2025`;
+            document.getElementById('infographic-title').textContent = `Ανάλυση Πωλήσεων ${data.storeName} Ιανουάριος - Σεπτέμβριος 2024-2025`;
 
             // Update KPI values
             const overallValueChange = data.overall.totalValue2024 === 0 ? 0 : ((data.overall.totalValue2025 - data.overall.totalValue2024) / data.overall.totalValue2024) * 100;
@@ -493,7 +493,7 @@ scatterChartInstance = new Chart(document.getElementById('scatterChart'), {
     data: {
         labels: data.allCategories.map(d => wrapLabel(d.category)),
         datasets: [{
-            label: 'Κατηγορίες Πωλήσεων Ιανουάριος - Αύγουστος 2025',
+            label: 'Κατηγορίες Πωλήσεων Ιανουάριος - Σεπτέμβριος 2025',
             data: data.allCategories.map(d => ({ 
                 x: d.quantity, 
                 y: d.value, 
@@ -1003,6 +1003,7 @@ scatterChartInstance = new Chart(document.getElementById('scatterChart'), {
     </script>
 </body>
 </html>
+
 
 
 
