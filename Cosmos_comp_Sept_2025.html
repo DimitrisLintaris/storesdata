@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Πρότυπο Infographic Ανάλυσης Πωλήσεων</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
+        }
+        .kpi-value {
+            font-weight: 900;
+            line-height: 1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            text-align: left;
+        }
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="Cosmos.html">
+            <i class="fas fa-home"></i> 🏠Επιστροφή στην αρχική σελίδα
+        </a>
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2" id="infographic-title">Ανάλυση Πωλήσεων Σεπτέμβριος 2024-2025</h1>
+            <p class="text-lg text-gray-600">Βασικές Τάσεις, Προκλήσεις & Ευκαιρίες Ανάπτυξης</p>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white p-6 rounded-2xl shadow-md text-center">
+                <h3 class="text-md font-semibold text-gray-500 mb-2">Συνολική Μεταβολή Αξίας</h3>
+                <p class="text-5xl kpi-value" id="kpi-value-1"></p>
+                <p class="text-sm text-gray-500 mt-2" id="kpi-text-1"></p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-md text-center">
+                <h3 class="text-md font-semibold text-gray-500 mb-2">Συνολική Μεταβολή Ποσότητας</h3>
+                <p class="text-5xl kpi-value" id="kpi-value-2"></p>
+                <p class="text-sm text-gray-500 mt-2" id="kpi-text-2"></p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-md text-center">
+                <h3 class="text-md font-semibold text-gray-500 mb-2">Συμμετοχή Top 10 στον Τζίρο</h3>
+                <p class="text-5xl kpi-value text-blue-500" id="kpi-value-3"></p>
+                 <p class="text-sm text-gray-500 mt-2">Οι κορυφαίες κατηγορίες οδηγούν τις πωλήσεις</p>
+            </div>
+        </section>
+
+        <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-1 text-center">Απόδοση Κατηγοριών</h2>
+                <p class="text-gray-600 mb-4 text-center">Μεταβολή αξίας (%) για τις κατηγορίες, ταξινομημένες με βάση την αξία τους τον Αύγουστο 2025. Το γράφημα αναδεικνύει τους πρωταγωνιστές της ανάπτυξης και τις κατηγορίες που αντιμετωπίζουν προκλήσεις.</p>
+                <div class="flex items-center space-x-4 mb-4">
+                    <label for="category-count-slider" class="text-gray-700 font-semibold">Εμφάνιση Κατηγοριών:</label>
+                    <input type="range" id="category-count-slider" min="1" max="10" value="10" class="flex-grow accent-blue-500">
+                    <span id="category-count-value" class="font-bold text-blue-600">10</span>
+                </div>
+                <!-- New radio buttons for chart metric selection -->
+                <div class="flex justify-center space-x-4 mb-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="chartMetric" value="valueChange" class="form-radio text-blue-600" checked>
+                        <span class="ml-2 text-gray-700">Μεταβολή Αξίας</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="chartMetric" value="quantityChange" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">Μεταβολή Ποσότητας</span>
+                    </label>
+                </div>
+                <div class="chart-container h-[500px]">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-1 text-center">Σύνθεση Τζίρου Top 5</h2>
+                <p class="text-gray-600 mb-4 text-center">Το γράφημα απεικονίζει τη συμβολή των 5 κορυφαίων κατηγοριών στη συνολική αξία πωλήσεων των Top 10 για τον Αύγουστο, δείχνοντας την εξάρτηση του τζίρου από συγκεκριμένα προϊόντα.</p>
+                <div class="chart-container">
+                    <canvas id="compositionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-1 text-center">Συσχέτιση Αξίας & Ποσότητας</h2>
+                <p class="text-gray-600 mb-4 text-center">Κάθε τελεία αντιστοιχεί σε μια κατηγορία, δείχνοντας τη σχέση μεταξύ της συνολικής αξίας πωλήσεων (άξονας Υ) και της ποσότητας (άξονας Χ) για τοω Αύγουστο 2025. Εντοπίστε προϊόντα υψηλής αξίας και μεγάλου όγκου.</p>
+                <div class="chart-container">
+                    <canvas id="scatterChart"></canvas>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-4 text-center">Νικητές & Ηττημένοι</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="text-center p-4 rounded-lg bg-green-50">
+                        <h3 class="text-xl font-bold text-green-800 mb-4">Οι Μεγάλοι Νικητές 🚀 <br><span class="text-sm font-normal text-gray-600">(Βάσει Αξίας με θετική μεταβολή ποσότητας)</span></h3>
+                        <div class="space-y-4" id="winners-list">
+                            <!-- Winners -->
+                        </div>
+                    </div>
+                     <div class="text-center p-4 rounded-lg bg-red-50">
+                        <h3 class="text-xl font-bold text-red-800 mb-4">Οι Μεγαλύτερες Προκλήσεις 📉 <br><span class="text-sm font-normal text-gray-600">(Βάσει Αξίας με αρνητική μεταβολή ποσότητας)</span></h3>
+                         <div class="space-y-4" id="losers-list">
+                            <!-- Losers will be populated here dynamically -->
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-4 text-center">Sandwiches: Μεταβολή Ποσότητας</h2>
+                <p class="text-gray-600 mb-4 text-center">Ανάλυση των sandwiches με τη μεγαλύτερη αξία και η μεταβολή της ποσότητας τους.</p>
+                <div class="flex items-center space-x-4 mb-4">
+                    <label for="sandwich-count-slider" class="text-gray-700 font-semibold">Εμφάνιση Προϊόντων:</label>
+                    <input type="range" id="sandwich-count-slider" min="0" max="10" value="4" step="2" class="flex-grow accent-blue-500">
+                    <span id="sandwich-count-value" class="font-bold text-blue-600">4</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="text-center p-4 rounded-lg bg-gray-50">
+                        <h3 class="text-xl font-bold text-green-800 mb-4">Top sandwiches (Αξία) μεταβολή ποσότητας 📈</h3>
+                        <div class="space-y-4" id="sandwich-winners-quantity-list">
+                            <!-- Sandwich quantity winners will be populated here -->
+                        </div>
+                    </div>
+                    <div class="text-center p-4 rounded-lg bg-red-50">
+                        <h3 class="text-xl font-bold text-red-800 mb-4">Last sandwiches (Αξία) μεταβολή ποσότητας 📉</h3>
+                        <div class="space-y-4" id="sandwich-losers-quantity-list">
+                            <!-- Sandwich quantity losers will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New section for Πιτάκια data as a bar chart -->
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-4 text-center">Αναλυτικά Δεδομένα Πιτάκια</h2>
+                <p class="text-gray-600 mb-4 text-center">Μεταβολή αξίας και ποσότητας για την κατηγορία Πιτάκια.</p>
+                <div class="chart-container">
+                    <canvas id="pitakiaChart"></canvas>
+                </div>
+            </div>
+
+            <!-- New section for Sandwiches summary data as a bar chart -->
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-4 text-center">Συνοπτικά Δεδομένα Σάντουιτς & Τορτίγιες</h2>
+                <p class="text-gray-600 mb-4 text-center">Συνοπτική μεταβολή αξίας και ποσότητας για τις κατηγορίες Σάντουιτς και Τορτίγιες.</p>
+                <div class="chart-container">
+                    <canvas id="sandwichesTortillasChart"></canvas>
+                </div>
+            </div>
+
+            <!-- NEW SECTION: Μεταβολή Αξίας στις Πρώτες 10 Κατηγορίες -->
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-1 text-center">Μεταβολή Αξίας στις Πρώτες 10 Κατηγορίες</h2>
+                <p class="text-gray-600 mb-4 text-center">Πίνακας που δείχνει την αξία πωλήσεων για το 2025 και το 2024, καθώς και την απόλυτη μεταβολή της αξίας (€) για τις 10 κορυφαίες κατηγορίες, ταξινομημένες με βάση την αξία τους το 2025.</p>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-lg shadow-sm">
+                        <thead>
+                            <tr>
+                                <th class="py-3 px-4 border-b text-sm font-semibold text-gray-700">Κατηγορία</th>
+                                <th class="py-3 px-4 border-b text-sm font-semibold text-gray-700 text-right">Αξία 2025 (€)</th>
+                                <th class="py-3 px-4 border-b text-sm font-semibold text-gray-700 text-right">Αξία 2024 (€)</th>
+                                <th class="py-3 px-4 border-b text-sm font-semibold text-gray-700 text-right">Μεταβολή Αξίας (€)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="value-change-table-body">
+                            <!-- Table rows will be populated here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Removed the chart from this section -->
+            </div>
+            <!-- END NEW SECTION -->
+
+        </main>
+        
+        <footer class="text-center mt-12 py-6 border-t">
+            <h2 class="text-2xl font-bold mb-2text-center">Βασικά Συμπεράσματα</h2>
+            <div class="max-w-4xl mx-auto text-gray-600 space-y-2" id="conclusions-list">
+                <!-- Conclusions will be populated dynamically -->
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Function to parse currency string (e.g., "€ 20.934,12" to 20934.12)
+        function parseCurrency(str) {
+            if (!str || str.trim() === '€ -' || str.trim() === '-' || str.trim() === '0') return 0; // Added '0' to check
+            // Remove '€', thousands separators (.), and replace comma with dot for decimals
+            return parseFloat(str.replace('€', '').replace(/\./g, '').replace(',', '.').trim());
+        }
+
+        // Function to parse percentage string (e.g., "-2%" to -2)
+        function parsePercentage(str) {
+            if (!str || str.trim() === '-' || str.trim() === '0%') return 0;
+            return parseFloat(str.replace('%', '').replace('▲', '').replace('▼', '').trim());
+        }
+
+        // Modified wrapLabel to always return an array
+        function wrapLabel(str, maxLen = 16) {
+            if (str.length <= maxLen) return [str]; // Always return an array, even if single element
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLen && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const commonChartOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        font: { size: 14, family: 'Inter' }
+                    }
+                },
+                tooltip: {
+                    callbacks: { title: tooltipTitleCallback },
+                    titleFont: { size: 16, family: 'Inter', weight: 'bold' },
+                    bodyFont: { size: 14, family: 'Inter' },
+                    padding: 10,
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    titleColor: '#ffffff',
+                    bodyColor: '#ffffff',
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { font: { size: 12, family: 'Inter' } },
+                    grid: { display: false }
+                },
+                y: {
+                    ticks: { font: { size: 12, family: 'Inter' } },
+                    grid: { color: '#e5e7eb' }
+                }
+            }
+        };
+
+        const palette = {
+            red: '#F94144',
+            orange: '#F3722C',
+            yellowOrange: '#F8961E',
+            yellow: '#F9C74F',
+            green: '#90BE6D',
+            teal: '#43AA8B',
+            blue: '#577590',
+            positive: '#43AA8B',
+            negative: '#F94144'
+        };
+        const chartColors = [palette.blue, palette.teal, palette.green, palette.yellow, palette.orange, palette.red, palette.yellowOrange];
+
+        let performanceChartInstance = null;
+        let compositionChartInstance = null;
+        let scatterChartInstance = null;
+        let pitakiaChartInstance = null;
+        let sandwichesTortillasChartInstance = null;
+        let sandwichQuantityChangeChartInstance = null;
+        // let top10ValueChangeChartInstance = null; // Removed this chart instance
+
+        /**
+         * Renders the infographic with the provided data.
+         * @param {object} data - The data object containing all infographic data.
+         * @param {string} data.storeName - The name of the store for the title.
+         * @param {object} data.overall - Overall KPI data.
+         * @param {number} data.overall.totalValue2025
+         * @param {number} data.overall.totalValue2024
+         * @param {number} data.overall.totalQuantity2025
+         * @param {number} data.overall.totalQuantity2024
+         * @param {number} data.overall.top10Share
+         * @param {Array<object>} data.allCategories - Data for all product categories.
+         * @param {Array<object>} data.sandwichCategories - Data specific to sandwich categories.
+         */
+        function renderInfographic(data) {
+            // Update title
+            document.getElementById('infographic-title').textContent = `Ανάλυση Πωλήσεων ${data.storeName} Σεπτέμβριος2024-2025`;
+
+            // Update KPI values
+            const overallValueChange = data.overall.totalValue2024 === 0 ? 0 : ((data.overall.totalValue2025 - data.overall.totalValue2024) / data.overall.totalValue2024) * 100;
+            const overallQuantityChange = data.overall.totalQuantity2024 === 0 ? 0 : ((data.overall.totalQuantity2025 - data.overall.totalQuantity2024) / data.overall.totalQuantity2024) * 100;
+
+            const kpiValue1 = document.getElementById('kpi-value-1');
+            const kpiText1 = document.getElementById('kpi-text-1');
+            if (kpiValue1 && kpiText1) {
+                kpiValue1.textContent = `${overallValueChange >= 0 ? '+' : ''}${overallValueChange.toFixed(0)}%`;
+                kpiValue1.classList.remove('text-red-500', 'text-blue-500', 'text-green-500');
+                kpiValue1.classList.add(overallValueChange >= 0 ? 'text-green-500' : 'text-red-500');
+                kpiText1.textContent = `Από €${data.overall.totalValue2024.toFixed(0)} σε €${data.overall.totalValue2025.toFixed(0)}`;
+            }
+
+            const kpiValue2 = document.getElementById('kpi-value-2');
+            const kpiText2 = document.getElementById('kpi-text-2');
+            if (kpiValue2 && kpiText2) {
+                kpiValue2.textContent = `${overallQuantityChange >= 0 ? '+' : ''}${overallQuantityChange.toFixed(0)}%`;
+                kpiValue2.classList.remove('text-red-500', 'text-blue-500', 'text-green-500');
+                kpiValue2.classList.add(overallQuantityChange >= 0 ? 'text-green-500' : 'text-red-500');
+                kpiText2.textContent = `Από ${data.overall.totalQuantity2024.toFixed(0)} σε ${data.overall.totalQuantity2025.toFixed(0)} τεμάχια`;
+            }
+
+            const kpiValue3 = document.getElementById('kpi-value-3');
+            if (kpiValue3) {
+                // Calculate the sum of the top 10 categories' values
+                const top10CategoriesValue = [...data.allCategories]
+                    .sort((a, b) => b.value - a.value)
+                    .slice(0, 10)
+                    .reduce((sum, category) => sum + category.value, 0);
+
+                // Calculate the percentage of top 10 categories' value relative to overall total value
+                const top10SharePercentage = data.overall.totalValue2025 === 0 ? 0 : (top10CategoriesValue / data.overall.totalValue2025) * 100;
+
+                kpiValue3.textContent = `${top10SharePercentage.toFixed(0)}%`;
+            }
+
+            // Destroy existing chart instances if they exist
+            if (performanceChartInstance) performanceChartInstance.destroy();
+            if (compositionChartInstance) compositionChartInstance.destroy();
+            if (scatterChartInstance) scatterChartInstance.destroy();
+            if (pitakiaChartInstance) pitakiaChartInstance.destroy();
+            if (sandwichesTortillasChartInstance) sandwichesTortillasChartInstance.destroy();
+            if (sandwichQuantityChangeChartInstance) sandwichQuantityChangeChartInstance.destroy();
+            // if (top10ValueChangeChartInstance) top10ValueChangeChartInstance.destroy(); // Removed this chart instance destruction
+
+            // Performance Chart
+            const categoryCountSlider = document.getElementById('category-count-slider');
+            const categoryCountValue = document.getElementById('category-count-value');
+            const chartMetricRadios = document.querySelectorAll('input[name="chartMetric"]');
+
+            // Sort allCategoriesData by 'value' in descending order
+            const sortedAllCategoriesDataByValue = [...data.allCategories].sort((a, b) => b.value - a.value);
+
+            // Set slider max value based on the total number of categories
+            categoryCountSlider.max = sortedAllCategoriesDataByValue.length;
+
+            // Function to update the performance chart based on slider value and selected metric
+            const updatePerformanceChart = () => {
+                const numCategories = parseInt(categoryCountSlider.value);
+                categoryCountValue.textContent = numCategories;
+
+                const selectedMetric = document.querySelector('input[name="chartMetric"]:checked').value;
+                const chartLabel = selectedMetric === 'valueChange' ? 'Μεταβολή Αξίας (%)' : 'Μεταβολή Ποσότητας (%)';
+
+                // Slice the data after sorting by value
+                const displayedCategories = sortedAllCategoriesDataByValue.slice(0, numCategories);
+
+                // Re-create the chart
+                if (performanceChartInstance) performanceChartInstance.destroy();
+                performanceChartInstance = new Chart(document.getElementById('performanceChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: displayedCategories.map(d => wrapLabel(d.category)),
+                        datasets: [{
+                            label: chartLabel,
+                            data: displayedCategories.map(d => d[selectedMetric]),
+                            backgroundColor: displayedCategories.map(d => d[selectedMetric] >= 0 ? palette.positive : palette.negative),
+                            borderColor: displayedCategories.map(d => d[selectedMetric] >= 0 ? palette.positive : palette.negative),
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        ...commonChartOptions,
+                        indexAxis: 'y',
+                        scales: {
+                            y: {
+                                ticks: { font: { size: 12, family: 'Inter' } },
+                                grid: { display: false }
+                            },
+                            x: {
+                                ticks: {
+                                    font: { size: 12, family: 'Inter' },
+                                    callback: function(value) { return value + '%'; }
+                                },
+                                grid: { color: '#e5e7eb' }
+                            }
+                        },
+                        plugins: {
+                            ...commonChartOptions.plugins,
+                            tooltip: {
+                                ...commonChartOptions.plugins.tooltip,
+                                callbacks: {
+                                    title: tooltipTitleCallback,
+                                    label: function(context) {
+                                        const categoryData = displayedCategories[context.dataIndex];
+                                        // Calculate changes as (2025 - 2024) as requested
+                                        const quantityChange = categoryData.quantity - categoryData.quantity2024;
+                                        const valueChange = categoryData.value - categoryData.value2024;
+
+                                        const quantityChangeFormatted = `${quantityChange >= 0 ? '+' : ''}${new Intl.NumberFormat('el-GR').format(quantityChange)}`;
+                                        const valueChangeFormatted = `${valueChange >= 0 ? '+' : ''}${new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(valueChange)}`;
+
+                                        return [
+                                            `Μεταβολή Ποσότητας (2025-2024): ${quantityChangeFormatted}`,
+                                            `Μεταβολή Αξίας (2025-2024): ${valueChangeFormatted}`
+                                        ];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+
+            // Initial render of the performance chart
+            updatePerformanceChart();
+
+            // Add event listener for the slider
+            categoryCountSlider.addEventListener('input', updatePerformanceChart);
+
+            // Add event listeners for the radio buttons
+            chartMetricRadios.forEach(radio => {
+                radio.addEventListener('change', updatePerformanceChart);
+            });
+
+
+            // Composition Chart
+            const top5ByValue = [...data.allCategories].sort((a, b) => b.value - a.value).slice(0, 5);
+            compositionChartInstance = new Chart(document.getElementById('compositionChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: top5ByValue.map(d => wrapLabel(d.category)),
+                    datasets: [{
+                        label: 'Αξία Πωλήσεων (€)',
+                        data: top5ByValue.map(d => d.value),
+                        backgroundColor: chartColors.slice(0, 5),
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    ...commonChartOptions,
+                    scales: { x: { display: false }, y: { display: false } },
+                    plugins: {
+                        ...commonChartOptions.plugins,
+                        tooltip: {
+                            ...commonChartOptions.plugins.tooltip,
+                            callbacks: {
+                                title: tooltipTitleCallback,
+                                label: function(context) {
+                                    const item = context.raw;
+                                    return `${context.label}: ${new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(item)}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+           // Scatter Chart
+scatterChartInstance = new Chart(document.getElementById('scatterChart'), {
+    type: 'scatter',
+    data: {
+        labels: data.allCategories.map(d => wrapLabel(d.category)),
+        datasets: [{
+            label: 'Κατηγορίες Πωλήσεων Σεπτέμβριος2025',
+            data: data.allCategories.map(d => ({ 
+                x: d.quantity, 
+                y: d.value, 
+                value2024: d.value2024,
+                categoryName: d.category
+            })),
+            backgroundColor: chartColors,
+            pointRadius: 8,
+            pointHoverRadius: 12
+        }]
+    },
+    options: {
+        ...commonChartOptions,
+        scales: {
+            x: {
+                ...commonChartOptions.scales.x,
+                title: { display: true, text: 'Ποσότητα (Τεμάχια)', font: { size: 14, weight: 'bold' } }
+            },
+            y: {
+                ...commonChartOptions.scales.y,
+                title: { display: true, text: 'Αξία (€)', font: { size: 14, weight: 'bold' } },
+                ticks: {
+                    callback: function(value) { return new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(value); }
+                }
+            }
+        },
+        plugins: {
+            ...commonChartOptions.plugins,
+            tooltip: {
+                ...commonChartOptions.plugins.tooltip,
+                callbacks: {
+                    title: tooltipTitleCallback,
+                    label: function(context) {
+                        const item = context.raw;
+                        const valueFormatted = new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(item.y);
+                        const quantityFormatted = new Intl.NumberFormat('el-GR').format(item.x);
+                        
+                        // Calculate and format the value change
+                        const valueChange = item.y - item.value2024;
+                        const valueChangeFormatted = new Intl.NumberFormat('el-GR', { 
+                            style: 'currency', 
+                            currency: 'EUR', 
+                            minimumFractionDigits: 0,
+                            signDisplay: 'always' // This will show a '+' for positive numbers
+                        }).format(valueChange);
+
+                        return [
+                            `Αξία: ${valueFormatted}`,
+                            `Ποσότητα: ${quantityFormatted}`,
+                            `Μεταβολή Αξίας: ${valueChangeFormatted}` // New line for value change
+                        ];
+                    }
+                }
+            }
+        }
+    }
+});
+
+            // Winners & Losers for all Categories
+            // Winners: Filter for positive quantity change, then sort by value descending
+            const winners = [...data.allCategories]
+                .filter(item => item.quantityChange > 0)
+                .sort((a, b) => b.value - a.value)
+                .slice(0, 5);
+
+            // Losers: Filter for negative quantity change, then sort by value descending
+            // (to get the highest value items that have negative quantity change)
+            const losers = [...data.allCategories]
+                .filter(item => item.quantityChange < 0)
+                .sort((a, b) => b.value - a.value) // Sort by value descending
+                .slice(0, 5);
+
+            const winnersListDiv = document.getElementById('winners-list');
+            winnersListDiv.innerHTML = '';
+            if (winners.length > 0) {
+                winners.forEach((item) => {
+                    const div = document.createElement('div');
+                    div.className = 'p-3 bg-white rounded-lg shadow-sm'; // Added styling
+                    const valueDifference = item.value - item.value2024;
+                    const quantityDifference = item.quantity - item.quantity2024;
+                    div.innerHTML = `
+                        <p class="text-5xl font-black text-green-600">${item.quantityChange > 0 ? '+' : ''}${item.quantityChange}%</p>
+                        <p class="font-semibold">${wrapLabel(item.category).join('<br>')}</p>
+                        <p class="text-sm text-gray-500">Μεταβολή Ποσότητας: ${new Intl.NumberFormat('el-GR', { signDisplay: 'always' }).format(quantityDifference)} τεμ.</p>
+                        <p class="text-sm text-gray-500">Μεταβολή Αξίας: ${new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', signDisplay: 'always' }).format(valueDifference)}</p>
+                    `;
+                    winnersListDiv.appendChild(div);
+                });
+            } else {
+                winnersListDiv.innerHTML = '<p class="text-gray-500">Δεν υπάρχουν δεδομένα.</p>';
+            }
+
+            const losersListDiv = document.getElementById('losers-list');
+            losersListDiv.innerHTML = '';
+            if (losers.length > 0) {
+                losers.forEach((item) => {
+                    const div = document.createElement('div');
+                    div.className = 'p-3 bg-white rounded-lg shadow-sm'; // Added styling
+                    const valueDifference = item.value - item.value2024;
+                    const quantityDifference = item.quantity - item.quantity2024;
+                    div.innerHTML = `
+                        <p class="text-5xl font-black text-red-600">${item.quantityChange > 0 ? '+' : ''}${item.quantityChange}%</p>
+                        <p class="font-semibold">${wrapLabel(item.category).join('<br>')}</p>
+                        <p class="text-sm text-gray-500">Μεταβολή Ποσότητας: ${new Intl.NumberFormat('el-GR', { signDisplay: 'always' }).format(quantityDifference)} τεμ.</p>
+                        <p class="text-sm text-gray-500">Μεταβολή Αξίας: ${new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', signDisplay: 'always' }).format(valueDifference)}</p>
+                    `;
+                    losersListDiv.appendChild(div);
+                });
+            } else {
+                losersListDiv.innerHTML = '<p class="text-gray-500">Δεν υπάρχουν δεδομένα.</p>';
+            }
+
+            // Sandwiches: Quantity Change (First Half)
+            const sandwichCountSlider = document.getElementById('sandwich-count-slider');
+            const sandwichCountValue = document.getElementById('sandwich-count-value');
+
+            // Sort sandwichCategories by 'value' in descending order
+            const sortedSandwichCategoriesByValue = [...data.sandwichCategories].sort((a, b) => b.value - a.value);
+
+            // Set slider max value based on the total number of sandwich categories
+            // Ensure max is an even number if the total length is odd, to allow step=2 to reach it.
+            sandwichCountSlider.max = sortedSandwichCategoriesByValue.length % 2 === 0 ? sortedSandwichCategoriesByValue.length : sortedSandwichCategoriesByValue.length - 1;
+            if (sandwichCountSlider.max < 0) sandwichCountSlider.max = 0; // Handle case where length is 0 or 1
+
+            // Function to update the sandwich lists based on slider value
+            const updateSandwichLists = () => {
+                let numSandwiches = parseInt(sandwichCountSlider.value);
+                // Ensure the value is always even, even if the slider somehow lands on an odd number (e.g., if min was 1 and step was 2, but then min changed to 0)
+                if (numSandwiches % 2 !== 0) {
+                    numSandwiches = numSandwiches - 1; // Decrement to nearest even number
+                    if (numSandwiches < parseInt(sandwichCountSlider.min)) {
+                        numSandwiches = parseInt(sandwichCountSlider.min); // Ensure it doesn't go below min
+                    }
+                    sandwichCountSlider.value = numSandwiches; // Update slider position
+                }
+                sandwichCountValue.textContent = numSandwiches;
+
+
+                const topNSandwichesByValue = sortedSandwichCategoriesByValue.slice(0, numSandwiches);
+
+                // Winners: Filter for positive quantity change, then sort by quantity change descending
+                const sortedSandwichWinners = [...topNSandwichesByValue]
+                    .filter(item => item.quantityChange > 0)
+                    .sort((a, b) => b.quantityChange - a.quantityChange)
+                    .slice(0, numSandwiches); // Apply slider limit again after filtering
+
+                // Losers: Filter for negative quantity change, then sort by quantity change ascending
+                const sortedSandwichLosers = [...topNSandwichesByValue]
+                    .filter(item => item.quantityChange < 0)
+                    .sort((a, b) => a.quantityChange - b.quantityChange) // Sort by quantityChange ascending for losers
+                    .slice(0, numSandwiches); // Apply slider limit again after filtering
+
+                const sandwichWinnersListDiv = document.getElementById('sandwich-winners-quantity-list');
+                sandwichWinnersListDiv.innerHTML = '';
+                if (sortedSandwichWinners.length > 0) {
+                    sortedSandwichWinners.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'p-3 bg-white rounded-lg shadow-sm'; // Added styling
+                        const quantityDifference = item.quantity - item.quantity2024;
+                        div.innerHTML = `
+                            <p class="text-3xl font-black text-green-600">${item.quantityChange > 0 ? '+' : ''}${item.quantityChange}%</p>
+                            <p class="font-semibold text-sm">${wrapLabel(item.category).join('<br>')}</p>
+                            <p class="text-xs text-gray-500">Απόλυτη Μεταβολή Ποσότητας: ${new Intl.NumberFormat('el-GR', { signDisplay: 'always' }).format(quantityDifference)} τεμ.</p>
+                            <p class="text-xs text-gray-500">Ποσότητα 2025: ${item.quantity.toLocaleString('el-GR')}</p>
+                            <p class="text-xs text-gray-500">Ποσότητα 2024: ${item.quantity2024.toLocaleString('el-GR')}</p>
+                        `;
+                        sandwichWinnersListDiv.appendChild(div);
+                    });
+                } else {
+                    sandwichWinnersListDiv.innerHTML = '<p class="text-gray-500">Δεν υπάρχουν δεδομένα.</p>';
+                }
+
+                const sandwichLosersListDiv = document.getElementById('sandwich-losers-quantity-list');
+                sandwichLosersListDiv.innerHTML = '';
+                if (sortedSandwichLosers.length > 0) {
+                    sortedSandwichLosers.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'p-3 bg-white rounded-lg shadow-sm'; // Added styling
+                        const quantityDifference = item.quantity - item.quantity2024;
+                        div.innerHTML = `
+                            <p class="text-3xl font-black text-red-600">${item.quantityChange > 0 ? '+' : ''}${item.quantityChange}%</p>
+                            <p class="font-semibold text-sm">${wrapLabel(item.category).join('<br>')}</p>
+                            <p class="text-xs text-gray-500">Απόλυτη Μεταβολή Ποσότητας: ${new Intl.NumberFormat('el-GR', { signDisplay: 'always' }).format(quantityDifference)} τεμ.</p>
+                            <p class="text-xs text-gray-500">Ποσότητα 2025: ${item.quantity.toLocaleString('el-GR')}</p>
+                            <p class="text-xs text-gray-500">Ποσότητα 2024: ${item.quantity2024.toLocaleString('el-GR')}</p>
+                        `;
+                        sandwichLosersListDiv.appendChild(div);
+                    });
+                } else {
+                    sandwichLosersListDiv.innerHTML = '<p class="text-gray-500">Δεν υπάρχουν δεδομένα.</p>';
+                }
+            };
+
+            // Initial render of the sandwich lists
+            updateSandwichLists();
+
+            // Add event listener for the sandwich slider
+            sandwichCountSlider.addEventListener('input', updateSandwichLists);
+
+            // Find data for "ΠΙΤΑΚΙΑ-ΟΡΘ. ΠΙΤΕΣ" and "ΣΑΝΤΟΥΪΤΣ" / "ΤΟΡΤΙΓΙΕΣ"
+            const pitakiaData = data.allCategories.find(c => c.category.includes('ΠΙΤΑΚΙΑ-ΟΡΘ. ΠΙΤΕΣ'));
+            
+            const sandwichesTortillasSummary = data.allCategories.filter(c => 
+                c.category === 'ΣΑΝΤΟΥΪΤΣ' || c.category === 'ΤΟΡΤΙΓΙΕΣ'
+            );
+
+            // Chart for Πιτάκια
+            pitakiaChartInstance = new Chart(document.getElementById('pitakiaChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Μεταβολή Αξίας (%)', 'Μεταβολή Ποσότητας (%)'],
+                    datasets: [{
+                        label: pitakiaData ? pitakiaData.category : 'N/A',
+                        data: pitakiaData ? [pitakiaData.valueChange, pitakiaData.quantityChange] : [0, 0],
+                        backgroundColor: [
+                            pitakiaData && pitakiaData.valueChange >= 0 ? palette.positive : palette.negative,
+                            pitakiaData && pitakiaData.quantityChange >= 0 ? palette.positive : palette.negative
+                        ],
+                        borderColor: [
+                            pitakiaData && pitakiaData.valueChange >= 0 ? palette.positive : palette.negative,
+                            pitakiaData && pitakiaData.quantityChange >= 0 ? palette.positive : palette.negative
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    ...commonChartOptions,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) { return value + '%'; }
+                            }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            // Chart for Sandwiches & Tortillas
+            sandwichesTortillasChartInstance = new Chart(document.getElementById('sandwichesTortillasChart'), {
+                type: 'bar',
+                data: {
+                    labels: sandwichesTortillasSummary.map(d => wrapLabel(d.category)),
+                    datasets: [
+                        {
+                            label: 'Μεταβολή Αξίας (%)',
+                            data: sandwichesTortillasSummary.map(d => d.valueChange),
+                            backgroundColor: palette.blue,
+                            borderColor: palette.blue,
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Μεταβολή Ποσότητας (%)',
+                            data: sandwichesTortillasSummary.map(d => d.quantityChange),
+                            backgroundColor: sandwichesTortillasSummary.map(d => d.quantityChange >= 0 ? palette.teal : palette.red),
+                            borderColor: sandwichesTortillasSummary.map(d => d.quantityChange >= 0 ? palette.teal : palette.red),
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    ...commonChartOptions,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) { return value + '%'; }
+                            }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        ...commonChartOptions.plugins,
+                        tooltip: {
+                            callbacks: {
+                                title: (tooltipItems) => {
+                                    return tooltipItems[0].label;
+                                },
+                                label: (context) => {
+                                    const label = context.dataset.label || '';
+                                    const value = context.parsed.y;
+                                    return `${label}: ${value}%`;
+                                },
+                                footer: (tooltipItems) => {
+                                    const categoryName = tooltipItems[0].label.replace(/\n/g, ' ');
+                                    const categoryData = sandwichesTortillasSummary.find(d => d.category === categoryName);
+
+                                    if (categoryData) {
+                                        const valueChange = categoryData.valueChange;
+                                        const quantityChange = categoryData.quantityChange;
+                                        const totalValueChange = (categoryData.value - categoryData.value2024);
+                                        const totalQuantityChange = (categoryData.quantity - categoryData.quantity2024);
+                                        
+                                        const formatNumber = (num, isCurrency = true) => {
+                                            const formatted = new Intl.NumberFormat('el-GR', {
+                                                style: isCurrency ? 'currency' : 'decimal',
+                                                currency: 'EUR',
+                                                minimumFractionDigits: isCurrency ? 0 : 0
+                                            }).format(num);
+                                            return num > 0 ? `+${formatted}` : formatted;
+                                        };
+
+                                        return [
+                                            `Απόλυτη Μεταβολή Αξίας: ${formatNumber(totalValueChange)}`,
+                                            `Απόλυτη Μεταβολή Ποσότητας: ${formatNumber(totalQuantityChange, false)}`
+                                        ];
+                                    }
+                                    return '';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            // Populate Value Change Table
+            const valueChangeTableBody = document.getElementById('value-change-table-body');
+            valueChangeTableBody.innerHTML = ''; // Clear existing rows
+
+           // Get the top 10 categories by value (already sorted at the beginning of renderInfographic)
+			const top10CategoriesForTable = sortedAllCategoriesDataByValue.slice(0, 10);
+
+				let totalValue2025 = 0;
+				let totalValue2024 = 0;
+				let totalValueDifference = 0;
+
+				top10CategoriesForTable.forEach(category => {
+					const value2025 = category.value;
+					const value2024 = category.value2024;
+					const valueDifference = value2025 - value2024;
+
+					totalValue2025 += value2025;
+					totalValue2024 += value2024;
+					totalValueDifference += valueDifference;
+
+					const row = document.createElement('tr');
+					row.innerHTML = `
+						<td class="py-2 px-4 border-b text-sm">${category.category}</td>
+						<td class="py-2 px-4 border-b text-sm text-right">${new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(value2025)}</td>
+						<td class="py-2 px-4 border-b text-sm text-right">${new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(value2024)}</td>
+						<td class="py-2 px-4 border-b text-sm text-right ${valueDifference >= 0 ? 'text-green-600' : 'text-red-600'} font-semibold">
+							${valueDifference >= 0 ? '+' : ''}${new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(valueDifference)}
+						</td>
+					`;
+					valueChangeTableBody.appendChild(row);
+				});
+
+				// Create and append the sum row
+				const sumRow = document.createElement('tr');
+				sumRow.innerHTML = `
+					<td class="py-2 px-4 text-sm font-bold bg-gray-100">ΣΥΝΟΛΟ</td>
+					<td class="py-2 px-4 text-sm text-right font-bold bg-gray-100">${new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(totalValue2025)}</td>
+					<td class="py-2 px-4 text-sm text-right font-bold bg-gray-100">${new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(totalValue2024)}</td>
+					<td class="py-2 px-4 text-sm text-right font-bold bg-gray-100 ${totalValueDifference >= 0 ? 'text-green-600' : 'text-red-600'}">
+						${totalValueDifference >= 0 ? '+' : ''}${new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(totalValueDifference)}
+					</td>
+				`;
+				valueChangeTableBody.appendChild(sumRow);
+
+
+            // Update Conclusions
+            const conclusionsListDiv = document.getElementById('conclusions-list');
+            conclusionsListDiv.innerHTML = `
+                <p>Η συνολική αξία πωλήσεων για τον Αύγουστο παρουσίασε ${overallValueChange >= 0 ? 'αύξηση' : 'μείωση'} (${overallValueChange >= 0 ? '+' : ''}${overallValueChange.toFixed(0)}%), ενώ ο όγκος πωλήσεων παρουσίασε ${overallQuantityChange >= 0 ? 'αύξηση' : 'μείωση'} (${overallQuantityChange >= 0 ? '+' : ''}${overallQuantityChange.toFixed(0)}%).</p>
+                <p>Οι κατηγορίες με τη μεγαλύτερη ανάπτυξη είναι το <span class="font-bold text-green-600">${winners[0] ? winners[0].category : 'N/A'}</span>, το <span class="font-bold text-green-600">${winners[1] ? winners[1].category : 'N/A'}</span>, οι <span class="font-bold text-green-600">${winners[2] ? winners[2].category : 'N/A'}</span> και οι <span class="font-bold text-green-600">${winners[3] ? winners[3].category : 'N/A'}</span>.</p>
+                <p>Οι κατηγορίες με τις μεγαλύτερες προκλήσεις είναι τα <span class="font-bold text-red-600">${losers[0] ? losers[0].category : 'N/A'}</span>, το <span class="font-bold text-red-600">${losers[1] ? losers[1].category : 'N/A'}</span>, το <span class="font-bold text-red-600">${losers[2] ? losers[2].category : 'N/A'}</span> και το <span class="font-bold text-red-600">${losers[3] ? losers[3].category : 'N/A'}</span>.</p>
+                <p>Η στρατηγική εστίαση στην περαιτέρω ενίσχυση των κατηγοριών με θετική μεταβολή είναι κρίσιμης σημασίας για τη διατήρηση της ανοδικής πορείας, ενώ απαιτείται διερεύνηση για τις κατηγορίες με αρνητική μεταβολή.</p>
+            `;
+        }
+
+        // Initial data for the infographic (AG.SOFIAS 37 store)
+        const initialInfographicData = {
+            storeName: '"Παραδοσιακό Cosmos"',
+            overall: {
+                totalValue2025: 0, // Will be calculated from allCategories
+                totalValue2024: 0, // Will be calculated from allCategories
+                totalQuantity2025: 0, // Will be calculated from allCategories
+                totalQuantity2024: 0, // Will be calculated from allCategories
+                top10Share: 81 // From "Top 10 Κατηγορίες ποσοστό τζίρου"
+            },
+            allCategories: [
+				{ category: 'ΣΑΝΤΟΥΪΤΣ', value: parseCurrency('10954,1'), value2024: parseCurrency('10974'), valueChange: parsePercentage('0%'), quantity:2964, quantity2024: 3095, quantityChange: parsePercentage('-4%') },
+				{ category: 'ΕΣΠΡΕΣΣΟ', value: parseCurrency('10680,58'), value2024: parseCurrency('8257'), valueChange: parsePercentage('29%'), quantity:4335, quantity2024: 3522, quantityChange: parsePercentage('23%') },
+				{ category: 'ΠΡΟΣΦΟΡΑ ΚΑΦΕ- BENEFIT CARD', value: parseCurrency('5696,25'), value2024: parseCurrency('4046'), valueChange: parsePercentage('41%'), quantity:2855, quantity2024: 2080, quantityChange: parsePercentage('37%') },
+				{ category: 'ΠΙΤΕΣ', value: parseCurrency('5385,52'), value2024: parseCurrency('4462'), valueChange: parsePercentage('21%'), quantity:2141, quantity2024: 1819, quantityChange: parsePercentage('18%') },
+				{ category: 'ΠΙΤΑΚΙΑ-ΟΡΘ. ΠΙΤΕΣ', value: parseCurrency('4768,29'), value2024: parseCurrency('3915'), valueChange: parsePercentage('22%'), quantity:611, quantity2024: 462, quantityChange: parsePercentage('32%') },
+				{ category: 'ΚΑΠΟΥΤΣΙΝΟ', value: parseCurrency('4429,89'), value2024: parseCurrency('3845'), valueChange: parsePercentage('15%'), quantity:1644, quantity2024: 1496, quantityChange: parsePercentage('10%') },
+				{ category: 'PIZZA BAR', value: parseCurrency('4179,97'), value2024: parseCurrency('0'), valueChange: parsePercentage('100%'), quantity:1419, quantity2024: 0, quantityChange: parsePercentage('100%') },
+				{ category: 'ΑΡΤΟΖΥΜΕΣ', value: parseCurrency('3612,06'), value2024: parseCurrency('2792'), valueChange: parsePercentage('29%'), quantity:3082, quantity2024: 2226, quantityChange: parsePercentage('38%') },
+				{ category: 'GOODBUY ΠΡΟϊΟΝΤΑ-ΜΠΑΡΕΣ', value: parseCurrency('2770,57'), value2024: parseCurrency('1667'), valueChange: parsePercentage('66%'), quantity:172, quantity2024: 155, quantityChange: parsePercentage('11%') },
+				{ category: 'ΜΠΟΥΓΑΤΣΑ', value: parseCurrency('2666,24'), value2024: parseCurrency('1904'), valueChange: parsePercentage('40%'), quantity:1040, quantity2024: 755, quantityChange: parsePercentage('38%') },
+				{ category: 'ΑΝΑΨΥΚΤΙΚΑ ΜΠΟΥΚΑΛΙ', value: parseCurrency('2377,2'), value2024: parseCurrency('2181'), valueChange: parsePercentage('9%'), quantity:4474, quantity2024: 4105, quantityChange: parsePercentage('9%') },
+				{ category: 'ΧΥΜΟΙ ΦΥΣΙΚΟΙ', value: parseCurrency('1393,91'), value2024: parseCurrency('1110'), valueChange: parsePercentage('26%'), quantity:459, quantity2024: 384, quantityChange: parsePercentage('20%') },
+				{ category: 'ΤΟΡΤΙΓΙΕΣ', value: parseCurrency('1068,03'), value2024: parseCurrency('446'), valueChange: parsePercentage('139%'), quantity:364, quantity2024: 157, quantityChange: parsePercentage('132%') },
+				{ category: 'ΓΙΑΟΥΡΤΑΔΙΚΟ', value: parseCurrency('1060,33'), value2024: parseCurrency('281'), valueChange: parsePercentage('277%'), quantity:246, quantity2024: 78, quantityChange: parsePercentage('215%') },
+				{ category: 'ΚΡΟΥΑΣΑΝ', value: parseCurrency('1002,26'), value2024: parseCurrency('779'), valueChange: parsePercentage('29%'), quantity:675, quantity2024: 634, quantityChange: parsePercentage('6%') },
+				{ category: 'ΓΛΥΚΟΠΩΛΕΙΟΝ', value: parseCurrency('889,68'), value2024: parseCurrency('485'), valueChange: parsePercentage('83%'), quantity:255, quantity2024: 163, quantityChange: parsePercentage('56%') },
+				{ category: 'ΑΡΤΟΓΛΥΚΙΣΜΑΤΑ', value: parseCurrency('725,44'), value2024: parseCurrency('495'), valueChange: parsePercentage('47%'), quantity:339, quantity2024: 256, quantityChange: parsePercentage('32%') },
+				{ category: 'HEALTHY MEALS', value: parseCurrency('668,78'), value2024: parseCurrency('615'), valueChange: parsePercentage('9%'), quantity:181, quantity2024: 180, quantityChange: parsePercentage('1%') },
+				{ category: 'ΑΝΑΨΥΚΤΙΚΑ ΚΟΥΤΙ', value: parseCurrency('645,58'), value2024: parseCurrency('497'), valueChange: parsePercentage('30%'), quantity:346, quantity2024: 265, quantityChange: parsePercentage('31%') },
+				{ category: 'ΚΟΥΛΟΥΡΑΚΙΑ', value: parseCurrency('615,26'), value2024: parseCurrency('380'), valueChange: parsePercentage('62%'), quantity:536, quantity2024: 360, quantityChange: parsePercentage('49%') },
+				{ category: 'ΧΥΜΟΙ ΣΥΣΚΕΥΑΣΜΕΝΟΙ', value: parseCurrency('613,7'), value2024: parseCurrency('674'), valueChange: parsePercentage('-9%'), quantity:217, quantity2024: 242, quantityChange: parsePercentage('-10%') },
+				{ category: 'GLUTEN FREE', value: parseCurrency('612,38'), value2024: parseCurrency('685'), valueChange: parsePercentage('-11%'), quantity:173, quantity2024: 206, quantityChange: parsePercentage('-16%') },
+				{ category: 'ΕΛΛΗΝΙΚΟΣ', value: parseCurrency('602,85'), value2024: parseCurrency('581'), valueChange: parsePercentage('4%'), quantity:265, quantity2024: 269, quantityChange: parsePercentage('-1%') },
+				{ category: 'ΓΑΛΑ ΚΑΚΑΟ', value: parseCurrency('549,58'), value2024: parseCurrency('449'), valueChange: parsePercentage('22%'), quantity:253, quantity2024: 224, quantityChange: parsePercentage('13%') },
+				{ category: 'ΣΤΙΓΜΙΑΙΟΣ', value: parseCurrency('523,6'), value2024: parseCurrency('420'), valueChange: parsePercentage('25%'), quantity:268, quantity2024: 217, quantityChange: parsePercentage('24%') },
+				{ category: 'ΓΑΛΑ', value: parseCurrency('271,19'), value2024: parseCurrency('189'), valueChange: parsePercentage('43%'), quantity:111, quantity2024: 74, quantityChange: parsePercentage('50%') },
+				{ category: 'ΦΙΛΤΡΟΥ', value: parseCurrency('236,37'), value2024: parseCurrency('254'), valueChange: parsePercentage('-7%'), quantity:97, quantity2024: 105, quantityChange: parsePercentage('-8%') },
+				{ category: 'ΚΡΕΜΟΠΩΛΕΙΟΝ', value: parseCurrency('230,85'), value2024: parseCurrency('180'), valueChange: parsePercentage('28%'), quantity:93, quantity2024: 79, quantityChange: parsePercentage('18%') },
+				{ category: 'ΣΟΚΟΛΑΤΑ', value: parseCurrency('204,26'), value2024: parseCurrency('149'), valueChange: parsePercentage('37%'), quantity:74, quantity2024: 60, quantityChange: parsePercentage('23%') },
+				{ category: 'ΖΕΣΤΟ ΤΣΑΙ', value: parseCurrency('84,65'), value2024: parseCurrency('82'), valueChange: parsePercentage('3%'), quantity:43, quantity2024: 42, quantityChange: parsePercentage('2%') },
+				{ category: 'COMBO ΠΡΟΙΟΝΤΑ', value: parseCurrency('76,5'), value2024: parseCurrency('162'), valueChange: parsePercentage('-53%'), quantity:26, quantity2024: 56, quantityChange: parsePercentage('-54%') },
+				{ category: 'ΣΑΛΑΤΕΣ', value: parseCurrency('21,6'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:6, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΚΡΥΟ ΤΣΑΪ', value: parseCurrency('16,78'), value2024: parseCurrency('112'), valueChange: parsePercentage('-85%'), quantity:7, quantity2024: 30, quantityChange: parsePercentage('-77%') },
+				{ category: 'MOCACHINO-FREDOCHINO', value: parseCurrency('16,5'), value2024: parseCurrency('10'), valueChange: parsePercentage('65%'), quantity:5, quantity2024: 3, quantityChange: parsePercentage('67%') },
+				{ category: 'ΣΚΡΟΤΣΙΑΡΕΛΑ', value: parseCurrency('0'), value2024: parseCurrency('233'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 58, quantityChange: parsePercentage('-100%') },
+            ],
+            sandwichCategories: [
+				{ category: 'Χ. ΚΑΡΒΕΛΑΚΙ ΚΟΤΟΠΟΥΛΟ-COUNTRY CHICKEN', value: parseCurrency('2246,92'), value2024: parseCurrency('2008'), valueChange: parsePercentage('12%'), quantity:618, quantity2024: 586, quantityChange: parsePercentage('5%') },
+				{ category: 'ΣΟΥΣ.ΚΟΥΛΟΥΡΙ ΓΑΛΟΠΟΥΛΑ ΚΑΠΝΙΣΤΗ & ΜΑΝΟΥΡΙ', value: parseCurrency('2015,48'), value2024: parseCurrency('2046'), valueChange: parsePercentage('-1%'), quantity:524, quantity2024: 567, quantityChange: parsePercentage('-8%') },
+				{ category: 'ΜΠΑΚΕΤΑ ΦΙΛΕΤΟ ΚΟΤΟΠΟΥΛΟ ΕΜΜΕΝΤΑΛ', value: parseCurrency('1792,69'), value2024: parseCurrency('1789'), valueChange: parsePercentage('0%'), quantity:476, quantity2024: 500, quantityChange: parsePercentage('-5%') },
+				{ category: 'Χ. ΚΑΡΒΕΛΑΚΙ ΧΟΙΡΟΜΕΡΙ', value: parseCurrency('648,4'), value2024: parseCurrency('322'), valueChange: parsePercentage('101%'), quantity:166, quantity2024: 82, quantityChange: parsePercentage('102%') },
+				{ category: 'ΟΛ.ΜΠΑΓΚΕΤΑ ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('627,58'), value2024: parseCurrency('707'), valueChange: parsePercentage('-11%'), quantity:166, quantity2024: 192, quantityChange: parsePercentage('-14%') },
+				{ category: 'Ψ. ΚΟΥΡΚΟΥΜΑ ΚΟΛΟΚΥΘΟΣΠΟΡΟ & ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('618,2'), value2024: parseCurrency('425'), valueChange: parsePercentage('45%'), quantity:180, quantity2024: 129, quantityChange: parsePercentage('40%') },
+				{ category: 'ΧΑΡΟΥΠΙ ΦΕΤΑ & ΤΟΜΑΤΑ', value: parseCurrency('601,1'), value2024: parseCurrency('506'), valueChange: parsePercentage('19%'), quantity:175, quantity2024: 158, quantityChange: parsePercentage('11%') },
+				{ category: 'PANIS OLEUM RUSTICALE ΓΑΛΟΠΟΥΛΑ ΦΙΛΕΤΟ ΕΛΑΙΟΛΑΔΟ', value: parseCurrency('535,94'), value2024: parseCurrency('542'), valueChange: parsePercentage('-1%'), quantity:139, quantity2024: 142, quantityChange: parsePercentage('-2%') },
+				{ category: 'PANIS OLEUM NATURALE Φ.ΨΗΤΟ ΚΟΤΟΠΟΥΛΟ ΑΒΟΚΑΝΤΟ', value: parseCurrency('518,58'), value2024: parseCurrency('739'), valueChange: parsePercentage('-30%'), quantity:124, quantity2024: 180, quantityChange: parsePercentage('-31%') },
+				{ category: 'PANIS OLEUM NATURALE ΓΑΛΟΠΟΥΛΑ ΦΙΛΕΤΟ', value: parseCurrency('494,36'), value2024: parseCurrency('491'), valueChange: parsePercentage('1%'), quantity:128, quantity2024: 128, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΤΕRIYAKI ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('376,18'), value2024: parseCurrency('186'), valueChange: parsePercentage('102%'), quantity:131, quantity2024: 67, quantityChange: parsePercentage('96%') },
+				{ category: 'ΜΠΑΚΕΤΑ ΖΑΜΠΟΝ, ΓΚΟΥΝΤΑ', value: parseCurrency('325,5'), value2024: parseCurrency('412'), valueChange: parsePercentage('-21%'), quantity:112, quantity2024: 146, quantityChange: parsePercentage('-23%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΚΑΠΝΙΣΤΟ Φ.ΓΑΛΟΠΟΥΛΑΣ', value: parseCurrency('282,77'), value2024: parseCurrency('214'), valueChange: parsePercentage('32%'), quantity:99, quantity2024: 78, quantityChange: parsePercentage('27%') },
+				{ category: 'PANIS OLEUM SICILIANA ΜΟΤΣΑΡΕΛΑ', value: parseCurrency('224,07'), value2024: parseCurrency('356'), valueChange: parsePercentage('-37%'), quantity:69, quantity2024: 114, quantityChange: parsePercentage('-39%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΤΟΝΟ', value: parseCurrency('148,45'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:43, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΣΑΛΑΜΙ ΜΠΥΡΑΣ', value: parseCurrency('94,78'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:37, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'Ψ. ΚΟΥΡΚΟΥΜΑ ΠΡΟΣΟΥΤΟ CRUDO & PESTO ΒΑΣΙΛΙΚΟΥ', value: parseCurrency('86,58'), value2024: parseCurrency('159'), valueChange: parsePercentage('-46%'), quantity:23, quantity2024: 44, quantityChange: parsePercentage('-48%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΧΟΙΡΟΜΕΡΙ ΑΠΟΞ.ΣΥΚΟ', value: parseCurrency('77,89'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:25, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ MEXICAN ΚΟΤΟΠΟΥΛΟ', value: parseCurrency('65,54'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:23, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΧΑΡΟΥΠΙ Π.ΓΡΑΒΙΕΡΑ ΚΡΗΤΗΣ', value: parseCurrency('53,72'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:16, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΟΛ.ΜΠΑΓΚΕΤΑ ΧΟΙΡΟΜΕΡΙ', value: parseCurrency('42'), value2024: parseCurrency('8'), valueChange: parsePercentage('425%'), quantity:11, quantity2024: 2, quantityChange: parsePercentage('450%') },
+				{ category: 'PANIS OLEUM RUSTICALE ΜΑΝΙΤΑΡΙΑ ΠΛΕΥΡΩΤΟΥΣ', value: parseCurrency('31,2'), value2024: parseCurrency('154'), valueChange: parsePercentage('-80%'), quantity:8, quantity2024: 40, quantityChange: parsePercentage('-80%') },
+				{ category: 'ΜΠΡΙΟΣ ΚΑΠΝΙΣΤΟΣ ΣΟΛΟΜΟΣ', value: parseCurrency('31,15'), value2024: parseCurrency('16'), valueChange: parsePercentage('95%'), quantity:9, quantity2024: 5, quantityChange: parsePercentage('80%') },
+				{ category: 'PANIS OLEUM SICILIANA ΠΡΟΣΟΥΤΟ CRUDO', value: parseCurrency('25,2'), value2024: parseCurrency('79'), valueChange: parsePercentage('-68%'), quantity:6, quantity2024: 21, quantityChange: parsePercentage('-71%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΚΑΠΝΙΣΤΟ ΣΟΛΟΜΟ', value: parseCurrency('22,42'), value2024: parseCurrency('46'), valueChange: parsePercentage('-51%'), quantity:6, quantity2024: 12, quantityChange: parsePercentage('-50%') },
+				{ category: 'ΜΠΡΙΟΣ ΖΑΜΠΟΝ Κ.ΓΚΟΥΝΤΑ', value: parseCurrency('21,78'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:10, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΚΑΡΒΕΛΑΚΙ HOVIS ΠΡΟΣΟΥΤΟ ΚΡΕΜΑ ΠΑΡΜΕΖΑΝΑ', value: parseCurrency('13,65'), value2024: parseCurrency('31'), valueChange: parsePercentage('-56%'), quantity:4, quantity2024: 9, quantityChange: parsePercentage('-56%') },
+				{ category: 'PLANT BASED Ψ.ΛΑΧ & ΦΕΤΑ.ΣΕ Χ.ΜΠΑΓΚΕΤΑ ΟΛ.', value: parseCurrency('0'), value2024: parseCurrency('24'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 6, quantityChange: parsePercentage('-100%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΓΟΥΑΚΑΜΟΛΕ ΜΕ ΑΥΓΟ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΜΠΡΙΟΣ ΜΟΤΣΑΡΕΛΑ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΠΟΛΥΣΠΟΡΟ ΚΡΟΥΑΣΑΝ ΠΡΟΣΟΥΤΟ ΚΡΕΜΑ ΤΥΡΙΟΥ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'Ψ. ΚΟΥΡΚΟΥΜΑ ΠΑΝΤΖΑΡΙ & ΓΑΛΟΜΥΖΗΘΡΑ ΚΡΗΤΗΣ', value: parseCurrency('0'), value2024: parseCurrency('39'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 11, quantityChange: parsePercentage('-100%') },
+				{ category: 'ΚΑΡΒΕΛΑΚΙ HOVIS ΓΑΛΟΠΟΥΛΑ ΜΠΑΧΤΣΕ, CREAM CHEESE', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'Χ. ΚΑΡΒΕΛΑΚΙ ΣΤΡΑΠΑΤΣΑΔΑ', value: parseCurrency('0'), value2024: parseCurrency('109'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 30, quantityChange: parsePercentage('-100%') },
+				{ category: 'PLANT BASED ΠΑΝΤΖΑΡΙ-ΚΑΡΟΤΟ & ΜΠΡΟΚΟΛΟ.ΣΕ Ψ.ΧΑΡΟΥΠΙΟΥ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PLANT BASED ΜΑΝΙΤΑΡΙΑ & ΝΤΟΜ.ΣΕ Ψ.ΧΑΡΟΥΠΙΟΥ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΣΟΛΟΜΟ & GUACAMOLE', value: parseCurrency('0'), value2024: parseCurrency('5'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 1, quantityChange: parsePercentage('-100%') },
+				{ category: 'PLANT BASED ΦΑΛΑΦΕΛ & Ψ.ΜΕΛΙΤΖΑΝΑ ΣΕ PANIS OLEUM RUSTICALE', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΠΑΣΤΡΑΜΙ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΤΑΤΑΣ & ΛΑΧ. ΤΟΡΤΙΓΙΑ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΤΑΤΑΣ&ΠΑΤΖΑΡΙΟΥ ΣΕ Ψ.ΚΟΥΡΚΟΥΜΑ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΝΤΖΑΡΙΟΥ & ΛΑΧ.ΤΟΡΤΙΓΙΑ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΣΟΛΟΜΟ & COLESLAW', value: parseCurrency('0'), value2024: parseCurrency('5'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 1, quantityChange: parsePercentage('-100%') },
+				{ category: 'PLANT BASED ΦΑΛΑΦΕΛ &Ψ.ΛΑΧ.ΤΟΡΤΙΓΙΑ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PLANT BASED ΖΑΜΠΟΝ & ΓΚΟΥΝΤΑ ΣΕ Χ.ΜΠΑΓΚΕΤΑ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΜΕ ΠΑΣΤΡΑΜΙ & WASABI', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΚΑΡΒΕΛΑΚΙ ΗOVIS MANITAΡΙΑ ΦΟΥΡΝΟΥ (VEGAN)', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΚΙΝΟΑ &Ψ.ΛΑΧ ΤΟΡΤΙΓΙΑ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PANIS OLEUM NATURALE ΠΡΟΣΟΥΤΟ CRUDO & ΜΑΝΙΤΑΡΙΑ ΦΟΥΡΝΟΥ', value: parseCurrency('0'), value2024: parseCurrency('4'), valueChange: parsePercentage('-100%'), quantity:0, quantity2024: 1, quantityChange: parsePercentage('-100%') },
+				{ category: 'PLANT BASED ΚΕΦΤΕΔΑΚΙΑ ΠΑΝΤΖΑΡΙΟΥ ΣΕ PANIS OLEUM RUSTICALE', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PANIS OLEUM RUSTICALE ΦΑΛΑΦΕΛ ΜΕ ΣΩΣ ΤΑΧΙΝΙ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΦΕΤΕΣ ΜΠΡΙΟΣ ΨΩΜΙ ΜΕ ΤΟΝΟ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΣΟΥΣ.ΚΟΥΛΟΥΡΙ ΦΑΛΑΦΕΛ (VEGAN)', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΣΟΥΣ.ΚΟΥΛΟΥΡΙ Π.ΓΡΑΒΙΕΡΑ ΚΡΗΤΗΣ & Ψ. ΜΑΝΙΤΑΡΙΑ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΟΛ.ΜΠΑΓΚΕΤΑ ΣΑΛΑΜΙ ΜΠΥΡΑΣ ΓΑΛΟΜΥΖΗΘΡΑ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΚΑΡΒΕΛΑΚΙ ΚΙΝΟΑ ΜΕ ΤΟΝΟ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΠΡΟΣΟΥΤΟ CRUDO & ΜΟΤΣΑΡΕΛΑ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PANIS OLEUM SICILIANA ΜΕ ΚΟΛΟΚ/ΔΕΣ ΝΗΣΤ.ΤΥΡΙ,ΝΤΟΜ.ΦΟΥΡ.', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PANIS OLEUM RUSTICALE ΠΑΣΤΡΑΜΙ ΔΡΑΜΑΣ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'PANIS OLEUM RUSTICALE ΜΕ ΝΗΣΤΙΣΙΜΟ ΛΕΥΚΟ ΤΥΡΙ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΦΑΛΑΦΕΛ', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΦΑΣΟΛΙΑ ΜΕXICAN VEGAN', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+				{ category: 'ΤΟΡΤΙΓΙΑ ΟΛΙΚΗΣ ΚΙΝΟΑ- ΨΗΤΑ ΛΑΧΑΝΙΚΑ VEGAN', value: parseCurrency('0'), value2024: parseCurrency('0'), valueChange: parsePercentage('0%'), quantity:0, quantity2024: 0, quantityChange: parsePercentage('0%') },
+            ],
+        };
+
+        // Calculate overall totals from allCategories
+        initialInfographicData.allCategories.forEach(category => {
+            initialInfographicData.overall.totalValue2025 += category.value;
+            initialInfographicData.overall.totalValue2024 += category.value2024;
+            initialInfographicData.overall.totalQuantity2025 += category.quantity;
+            initialInfographicData.overall.totalQuantity2024 += category.quantity2024;
+        });
+
+        // Render the infographic with initial data when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            renderInfographic(initialInfographicData);
+        });
+    </script>
+</body>
+</html>
